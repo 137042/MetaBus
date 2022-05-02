@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MyPageController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="185.0" minHeight="10.0" percentHeight="15.0" prefHeight="79.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="348.0" minHeight="10.0" percentHeight="85.0" prefHeight="321.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="HELLO, ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblName">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</GridPane>
