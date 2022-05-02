@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FEFEFE;"
+          xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MainController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="60.0" prefWidth="600.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="40.0" prefWidth="400.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="15.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="85.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <TextField prefHeight="30.0" prefWidth="420.0" promptText="Enter something like hospital, theatre...">
+               <HBox.margin>
+                  <Insets left="40.0" right="15.0" top="40.0" />
+               </HBox.margin></TextField>
+            <Button id="btnSearch" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                     <Image url="@../metabus/img/search.png" />
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="15.0" right="10.0" top="40.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+      <Pane prefHeight="365.0" prefWidth="275.0" style="-fx-border-width: 2px;" GridPane.rowIndex="1">
+         <children>
+            <BorderPane layoutX="72.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-width: 1px; -fx-border-style: solid; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 0);">
+               <center>
+                  <ImageView fitHeight="456.0" fitWidth="485.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@img/KakaoTalk_20220415_172851863.png" />
+                     </image>
+                  </ImageView>
+               </center>
+            </BorderPane>
+         </children>
+      </Pane>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="288.0" GridPane.columnIndex="1">
+         <children>
+            <Label layoutX="14.0" layoutY="45.0" prefHeight="44.0" prefWidth="259.0" text="Bus Info" textAlignment="CENTER" textFill="#809dd0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
+                     <image>
+                        <Image url="@img/bus-stop.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
+      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="338.0" style="-fx-border-color: #FEFEFE; -fx-background-color: #FEFEFE;" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <content>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="333.0" style="-fx-background-color: #FEFEFE;">
+               <children>
+                  <TableView fx:id="myTableView" layoutX="1.0" prefHeight="455.0" prefWidth="332.0">
+                     <columns>
+                        <TableColumn fx:id="busColumn" prefWidth="70.0" text="bus" />
+                        <TableColumn fx:id="scheColumn" prefWidth="92.33331298828125" text="schedule" />
+                        <TableColumn fx:id="stopColumn" prefWidth="78.3333740234375" text="cur_stop" />
+                        <TableColumn fx:id="leftColumn" prefWidth="71.6666259765625" text="left" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</GridPane>

@@ -1,0 +1,37 @@
+package com.example.metabus;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class Application extends javafx.application.Application {
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        scene.getStylesheets().add("com/example/metabus/stylesheet.css");
+        stage.setTitle("MetaBus");
+        stage.setResizable(false);
+        stage.setMaximized(false);
+        stage.setFullScreen(false);
+        stage.setScene(scene);
+        stage.show();
+
+//        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+//        stage.setTitle("MainPage");
+//        stage.setResizable(false);
+//        stage.setMaximized(false);
+//        stage.setFullScreen(false);
+//        stage.setScene(scene);
+//        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+
+}
