@@ -3,4 +3,9 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="16" />
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MetaBus.main" options="--add-exports com.fasterxml.jackson.annotation/com.fasterxml=com.example.metabus --add-exports com.fasterxml.jackson.annotation/com.fasterxml.jackson=com.example.metabus" />
+    </option>
+  </component>
 </project>
