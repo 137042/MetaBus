@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-maven-plugin', version: '2.6.7'
 }
 
 test {
