@@ -15,12 +15,11 @@ public class Popup {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - Register");
-        popup.setMinWidth(250);
         popup.setResizable(false);
         popup.setMaximized(false);
         popup.setFullScreen(false);
         popup.setScene(scene);
-        popup.showAndWait();
+        popup.show();
     }
 
     public static void findPwDisplay() throws IOException {
@@ -29,12 +28,11 @@ public class Popup {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - Find Password");
-        popup.setMinWidth(250);
         popup.setResizable(false);
         popup.setMaximized(false);
         popup.setFullScreen(false);
         popup.setScene(scene);
-        popup.showAndWait();
+        popup.show();
     }
 
     public static void myPageDisplay() throws IOException {
@@ -43,8 +41,11 @@ public class Popup {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - MyPage");
+        popup.setResizable(false);
+        popup.setMaximized(false);
+        popup.setFullScreen(false);
         popup.setScene(scene);
-        popup.showAndWait();
+        popup.show();
     }
 
 }

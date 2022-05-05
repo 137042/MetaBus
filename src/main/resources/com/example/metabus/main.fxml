@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="layoutGrid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FEFEFE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MainController">
+<GridPane fx:id="layoutGrid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="bg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MainController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="55.0" prefWidth="600.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="45.0" prefWidth="400.0" />
@@ -18,7 +18,7 @@
    <children>
       <HBox alignment="BOTTOM_RIGHT">
          <children>
-            <Button id="btnSearch" fx:id="btnUser" alignment="CENTER" contentDisplay="CENTER" layoutX="535.0" layoutY="60.0" mnemonicParsing="false" onAction="#openMyPage" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #ffffff; -fx-background-color: #ffffff;">
+            <Button id="btnSearch" fx:id="btnUser" alignment="CENTER" contentDisplay="CENTER" layoutX="535.0" layoutY="60.0" mnemonicParsing="false" onAction="#openMyPage" prefHeight="40.0" prefWidth="40.0" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                      <image>
@@ -30,11 +30,11 @@
                   <Insets bottom="5.0" />
                </HBox.margin>
             </Button>
-            <TextField prefHeight="30.0" prefWidth="303.0" promptText="Enter something like hospital, theatre...">
+            <TextField prefHeight="30.0" prefWidth="303.0" promptText="Enter something like hospital, theatre..." styleClass="input">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" />
                </HBox.margin></TextField>
-            <Button id="btnSearch" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+            <Button id="btnSearch" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
                      <Image url="@../metabus/img/search.png" />
@@ -61,36 +61,39 @@
                   <Insets bottom="10.0" left="30.0" right="10.0" />
                </HBox.margin>
             </ImageView>
-            <Label prefHeight="40.0" prefWidth="205.0" text="BUS INFO" textAlignment="CENTER">
+            <Label prefHeight="40.0" prefWidth="250.0" text="BUS INFO" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
                <HBox.margin>
-                  <Insets />
+                  <Insets bottom="10.0" />
                </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </Label>
-            <Button fx:id="btnOut" alignment="CENTER" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #FEFEFE;">
+            <Button fx:id="btnOut" alignment="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="42.0" prefWidth="42.0" styleClass="btn">
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="25.0" preserveRatio="true">
                      <image>
                         <Image url="@img/logout.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <HBox.margin>
+                  <Insets bottom="30.0" left="60.0" />
+               </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="316.0" style="-fx-border-color: #FEFEFE; -fx-background-color: #FEFEFE;" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="316.0" styleClass="bg" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <content>
-            <TableView fx:id="myTableView" prefHeight="425.0" prefWidth="322.0">
+            <TableView fx:id="myTableView" prefHeight="425.0" prefWidth="322.0" stylesheets="@stylesheet.css">
                <columns>
-                  <TableColumn fx:id="busColumn" prefWidth="70.0" text="bus" />
-                  <TableColumn fx:id="scheColumn" prefWidth="92.33331298828125" text="schedule" />
-                  <TableColumn fx:id="stopColumn" prefWidth="78.3333740234375" text="cur_stop" />
-                  <TableColumn fx:id="leftColumn" prefWidth="71.6666259765625" text="left" />
+                  <TableColumn fx:id="busColumn" editable="false" prefWidth="70.0" sortable="false" text="bus" />
+                  <TableColumn fx:id="scheColumn" editable="false" prefWidth="92.33331298828125" sortable="false" text="schedule" />
+                  <TableColumn fx:id="stopColumn" editable="false" prefWidth="78.3333740234375" sortable="false" text="cur_stop" />
+                  <TableColumn fx:id="leftColumn" editable="false" prefWidth="71.6666259765625" sortable="false" text="left" />
                </columns>
                <padding>
                   <Insets top="-1.0" />

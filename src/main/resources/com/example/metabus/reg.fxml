@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #FEFEFE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.RegController">
+<GridPane prefHeight="300.0" prefWidth="300.0" styleClass="bg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.RegController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -59,22 +59,22 @@
             </VBox>
             <VBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="139.0">
                <children>
-                  <TextField fx:id="txtId">
+                  <TextField fx:id="txtId" styleClass="input">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></TextField>
-                  <PasswordField fx:id="txtPw">
+                  <PasswordField fx:id="txtPw" styleClass="input">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></PasswordField>
-                  <TextField fx:id="txtName" />
+                  <TextField fx:id="txtName" styleClass="input" />
                </children>
             </VBox>
          </children>
       </HBox>
       <VBox alignment="TOP_CENTER" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" text="REGISTER">
+            <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" styleClass="btn" text="REGISTER">
                <font>
                   <Font size="16.0" />
                </font>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #FEFEFE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.FindPwController">
+<GridPane prefHeight="300.0" prefWidth="300.0" styleClass="bg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.FindPwController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -37,10 +37,10 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtId" />
+                  <TextField fx:id="txtId" styleClass="input" />
                </children>
             </HBox>
-            <Button fx:id="btnFind" mnemonicParsing="false" onAction="#findPw" text="FIND" />
+            <Button fx:id="btnFind" mnemonicParsing="false" onAction="#findPw" styleClass="btn" text="FIND" />
          </children></VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>

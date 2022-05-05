@@ -21,7 +21,7 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField txtPw;
     @FXML
-    private Button btnLogin;
+    private Button btnLogin, btnClose;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,6 +71,11 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             System.out.println("ERROR, login -> mainpage");
         }
+    }
+
+    public void close(){
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
     }
 
 }
