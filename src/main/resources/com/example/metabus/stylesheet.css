@@ -1,9 +1,0 @@
-.txtId.error{
-  -fx-text-box-border: red ;
-  -fx-focus-color: red ;
-}
-
-.txtPw.error{
-  -fx-text-box-border: red ;
-  -fx-focus-color: red ;
-}

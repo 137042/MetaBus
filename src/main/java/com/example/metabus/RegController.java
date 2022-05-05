@@ -20,7 +20,7 @@ public class RegController implements Initializable {
     }
 
     public void register(){
-        
+        // 가입이 성공하면 창이 꺼지도록 설계
     }
 
     private void checkId(){

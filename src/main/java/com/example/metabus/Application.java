@@ -12,7 +12,6 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-        scene.getStylesheets().add("com/example/metabus/stylesheet.css");
         stage.setTitle("MetaBus");
         stage.setResizable(false);
         stage.setMaximized(false);

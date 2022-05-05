@@ -3,9 +3,15 @@ package com.example.metabus;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.Style;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -16,17 +22,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ResourceBundle;
 
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import org.json.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MainController implements Initializable {
 
-    public class MapViewer extends Pane {
+    public class MapViewer extends StackPane {
 
         WebView webView = new WebView();
         WebEngine webEngine = webView.getEngine();
@@ -42,6 +48,7 @@ public class MainController implements Initializable {
             });
             getChildren().add(webView);
         }
+
     }
 
     @FXML
@@ -57,6 +64,8 @@ public class MainController implements Initializable {
     @FXML
     private GridPane layoutGrid;
     private MapViewer mapViewer;
+    @FXML
+    Button btnOut;
 
     public void initialize(URL location, ResourceBundle resources){
         ObservableList<TableRowDataModel> myList = FXCollections.observableArrayList(
@@ -72,6 +81,8 @@ public class MainController implements Initializable {
 
 
         mapViewer = new MapViewer();
+        mapViewer.setMaxSize(550.0, 550.0);
+        mapViewer.setPadding(new Insets(10, 10, 10, 100));
         layoutGrid.add(mapViewer, 0, 1);
     }
 
@@ -102,6 +113,21 @@ public class MainController implements Initializable {
 
     public void openMyPage() throws IOException {
         Popup.myPageDisplay();
+    }
+
+    public void logOut(){
+        Stage stage = (Stage) btnOut.getScene().getWindow();
+        try {
+            Parent second = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Scene scene = new Scene(second);
+            stage.setResizable(false);
+            stage.setMaximized(false);
+            stage.setFullScreen(false);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("ERROR, mainpage -> login");
+        }
     }
 
 }

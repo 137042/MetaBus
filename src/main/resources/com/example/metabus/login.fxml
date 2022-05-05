@@ -10,64 +10,70 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <VBox alignment="CENTER" GridPane.rowIndex="1">
+      <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1">
          <children>
             <Label text="LOGIN PAGE">
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Label>
          </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
       </VBox>
-      <VBox alignment="CENTER" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" GridPane.rowIndex="2">
          <children>
-            <HBox alignment="CENTER">
+            <VBox alignment="CENTER_RIGHT">
                <children>
                   <Label text="ID">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtId" onInputMethodTextChanged="#checkValidId">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER">
-               <children>
                   <Label text="PW">
                      <font>
                         <Font size="24.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
                   </Label>
+               </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+               <children>
+                  <TextField fx:id="txtId" onInputMethodTextChanged="#checkValidId">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
                   <PasswordField fx:id="txtPw" onInputMethodTextChanged="#checkValidPw">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </PasswordField>
                </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
             <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" text="REGISTER">
                <font>
@@ -92,6 +98,12 @@
                   <Insets />
                </HBox.margin></Button>
          </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
       </HBox>
    </children>
 </GridPane>

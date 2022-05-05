@@ -51,14 +51,14 @@ public class LoginController implements Initializable {
 
     public void login(){
         // login
-        movePage();
+        logIn();
     }
 
     public void findPw() throws IOException {
         Popup.findPwDisplay();
     }
 
-    public void movePage() {
+    public void logIn() {
         Stage stage = (Stage) btnLogin.getScene().getWindow();
         try {
             Parent second = FXMLLoader.load(getClass().getResource("main.fxml"));

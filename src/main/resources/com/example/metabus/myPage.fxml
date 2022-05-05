@@ -4,28 +4,49 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MyPageController">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints maxHeight="185.0" minHeight="10.0" percentHeight="15.0" prefHeight="79.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="348.0" minHeight="10.0" percentHeight="85.0" prefHeight="321.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MyPageController">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label text="HELLO, ">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblName">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0">
+               <children>
+                  <Label text="HELLO, ">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblName">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Accordion prefHeight="330.0" prefWidth="600.0">
+              <panes>
+                <TitledPane animated="false" text="Checked Facility">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="600.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="240.0" prefWidth="600.0" text="Checked Route">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="600.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Frequently Used Facility">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="600.0" />
+                  </content>
+                </TitledPane>
+                  <TitledPane animated="false" layoutX="10.0" layoutY="32.0" prefHeight="276.0" prefWidth="600.0" text="Frequently Used Route">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
          </children>
-      </HBox>
+      </VBox>
    </children>
-</GridPane>
+</StackPane>
