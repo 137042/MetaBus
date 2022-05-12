@@ -39,7 +39,7 @@
       </HBox>
       <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1">
          <children>
-            <Label text="LOGIN PAGE">
+            <Label text="LOGIN">
                <font>
                   <Font size="24.0" />
                </font>

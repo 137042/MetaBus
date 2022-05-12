@@ -12,7 +12,7 @@
 		const DEFAULT_POSITION = new kakao.maps.LatLng(36.145895067603114, 128.39279933712692);
 		const MAX_MARKER_CNT = 10;
 		const MARKER_ARRAY = [
-			new kakao.maps.MarkerImage('/mark.png', new kakao.maps.Size(36, 38)),
+			new kakao.maps.MarkerImage('/mark.png', new kakao.maps.Size(38, 38)),
 			new kakao.maps.MarkerImage('/mark-red.png', new kakao.maps.Size(40, 40)),
 			new kakao.maps.MarkerImage('/mark-blue.png', new kakao.maps.Size(40, 40))
 		];

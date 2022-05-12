@@ -76,7 +76,7 @@
          <children>
             <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" styleClass="btn" text="REGISTER">
                <font>
-                  <Font size="16.0" />
+                  <Font name="JetBrains Mono Regular" size="16.0" />
                </font>
                <VBox.margin>
                   <Insets />

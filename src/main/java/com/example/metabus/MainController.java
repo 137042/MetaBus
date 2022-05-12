@@ -14,11 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.*;
@@ -26,8 +23,6 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import org.json.JSONObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MainController implements Initializable {
 
@@ -51,15 +46,15 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private TableView<TableRowDataModel> myTableView;
+    private TableView<BusTableData> myTableView;
     @FXML
-    private TableColumn<TableRowDataModel, String> busColumn;
+    private TableColumn<BusTableData, String> busColumn;
     @FXML
-    private TableColumn<TableRowDataModel, String> scheColumn;
+    private TableColumn<BusTableData, String> scheColumn;
     @FXML
-    private TableColumn<TableRowDataModel, String> stopColumn;
+    private TableColumn<BusTableData, String> stopColumn;
     @FXML
-    private TableColumn<TableRowDataModel, String> leftColumn;
+    private TableColumn<BusTableData, String> leftColumn;
     @FXML
     private GridPane layoutGrid;
     private MapViewer mapViewer;
@@ -67,15 +62,15 @@ public class MainController implements Initializable {
     Button btnOut;
 
     public void initialize(URL location, ResourceBundle resources){
-        ObservableList<TableRowDataModel> myList = FXCollections.observableArrayList(
-                new TableRowDataModel(new SimpleStringProperty("버스 번호"), new SimpleStringProperty("남은 시간"), new SimpleStringProperty("현재 위치"), new SimpleStringProperty("남은 정류장")),
-                new TableRowDataModel(new SimpleStringProperty("버스 번호"), new SimpleStringProperty("남은 시간"), new SimpleStringProperty("현재 위치"), new SimpleStringProperty("남은 정류장"))
+        ObservableList<BusTableData> myList = FXCollections.observableArrayList(
+                new BusTableData(new SimpleStringProperty("버스 번호"), new SimpleStringProperty("남은 시간"), new SimpleStringProperty("현재 위치"), new SimpleStringProperty("남은 정류장")),
+                new BusTableData(new SimpleStringProperty("버스 번호"), new SimpleStringProperty("남은 시간"), new SimpleStringProperty("현재 위치"), new SimpleStringProperty("남은 정류장"))
                 );
 
         busColumn.setCellValueFactory(cellData -> cellData.getValue().getBus());
         scheColumn.setCellValueFactory(cellData -> cellData.getValue().getSchedule());
-        stopColumn.setCellValueFactory(cellData -> cellData.getValue().getCur_stop());
-        leftColumn.setCellValueFactory(cellData -> cellData.getValue().getLeft());
+        stopColumn.setCellValueFactory(cellData -> cellData.getValue().getCurrentStop());
+        leftColumn.setCellValueFactory(cellData -> cellData.getValue().getLeftTime());
         myTableView.setItems(myList);
 
 
