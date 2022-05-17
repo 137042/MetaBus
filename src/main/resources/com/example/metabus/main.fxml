@@ -88,7 +88,7 @@
       </HBox>
       <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="316.0" styleClass="bg" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <content>
-            <TableView fx:id="myTableView" prefHeight="425.0" prefWidth="322.0" stylesheets="@stylesheet.css">
+            <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" stylesheets="@stylesheet.css">
                <columns>
                   <TableColumn fx:id="busColumn" editable="false" prefWidth="70.0" sortable="false" text="bus" />
                   <TableColumn fx:id="scheColumn" editable="false" prefWidth="92.33331298828125" sortable="false" text="schedule" />

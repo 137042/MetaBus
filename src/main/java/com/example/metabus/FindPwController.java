@@ -11,9 +11,9 @@ import java.util.ResourceBundle;
 public class FindPwController implements Initializable {
 
     @FXML
-    TextField txtId;
+    private TextField txtId;
     @FXML
-    Label lblStmt, lblPw;
+    private Label lblStmt, lblPw;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

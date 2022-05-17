@@ -13,11 +13,11 @@ import java.util.ResourceBundle;
 public class RegController implements Initializable {
 
     @FXML
-    TextField txtName, txtId;
+    private TextField txtName, txtId;
     @FXML
-    PasswordField txtPw;
+    private PasswordField txtPw;
     @FXML
-    Button btnReg;
+    private Button btnReg;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -3,7 +3,46 @@
     padding: 0;
 }
 
-#map{
+#map-area{
+    position:relative;
+    overflow:hidden;
     width: 430px;
     height: 430px;
+    z-index: 0;
+}
+
+#map{
+    position:relative;
+    width: 430px;
+    height: 430px;
+    z-index: 0;
+}
+
+#add_start, #add_end, #clear{
+    display: inline-block;
+    color: #FFFFFF;
+    background-color: #8AAAE570;
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    font-size:12px;
+    padding: 1px 3px;
+    border: 1px solid #FFFFFF;
+}
+
+#add_start:hover, #add_end:hover, #clear:hover{
+    background-color: #8AAAE5;
+}
+
+#add_start{
+    left: 10px;
+}
+
+#add_end{
+    left: 90px;
+}
+
+#clear{
+    left: 170px;
 }

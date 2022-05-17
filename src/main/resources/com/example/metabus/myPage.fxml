@@ -49,22 +49,56 @@
               <panes>
                 <TitledPane animated="false" stylesheets="@stylesheet.css" text="Checked Facility">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="600.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="600.0">
+                           <children>
+                              <TableView fx:id="tblCF" layoutX="6.0" prefHeight="235.0" prefWidth="580.0">
+                                <columns>
+                                  <TableColumn fx:id="cfGcol" prefWidth="95.0" text="그룹" />
+                                  <TableColumn fx:id="cfNcol" prefWidth="95.0" text="시설명" />
+                                    <TableColumn fx:id="cfAcol" prefWidth="385.99998474121094" text="주소" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                   </content>
                 </TitledPane>
                 <TitledPane animated="false" prefHeight="240.0" prefWidth="600.0" stylesheets="@stylesheet.css" text="Checked Route">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="600.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="600.0">
+                           <children>
+                              <TableView fx:id="tblCR" layoutX="6.0" prefHeight="235.0" prefWidth="580.0">
+                                <columns>
+                                  <TableColumn fx:id="crScol" editable="false" maxWidth="291.33333349227905" prefWidth="287.33333349227905" resizable="false" text="출발 정류장" />
+                                  <TableColumn fx:id="crEcol" editable="false" maxWidth="290.0000305175781" prefWidth="288.0000305175781" resizable="false" text="도착 정류장" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                   </content>
                 </TitledPane>
                 <TitledPane animated="false" stylesheets="@stylesheet.css" text="Frequently Used Facility">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="600.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="600.0">
+                           <children>
+                              <TableView fx:id="tblFUF" layoutX="6.0" prefHeight="235.0" prefWidth="580.0">
+                                <columns>
+                                  <TableColumn fx:id="fufGcol" minWidth="0.0" prefWidth="95.0" text="그룹" />
+                                  <TableColumn fx:id="fufNcol" prefWidth="95.0" text="시설명" />
+                                    <TableColumn fx:id="fufAcol" prefWidth="384.99998474121094" text="주소" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                   </content>
                 </TitledPane>
                   <TitledPane animated="false" layoutX="10.0" layoutY="32.0" prefHeight="276.0" prefWidth="600.0" stylesheets="@stylesheet.css" text="Frequently Used Route">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tblFUR" layoutX="6.0" prefHeight="235.0" prefWidth="580.0">
+                                <columns>
+                                  <TableColumn fx:id="furScol" maxWidth="292.33333349227905" prefWidth="292.33333349227905" text="출발 정류장" />
+                                  <TableColumn fx:id="furEcol" maxWidth="291.3333435058594" prefWidth="282.3334045410156" text="도착 정류장" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                      </content>
                   </TitledPane>
               </panes>

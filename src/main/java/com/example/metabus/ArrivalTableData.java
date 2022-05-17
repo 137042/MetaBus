@@ -2,13 +2,14 @@ package com.example.metabus;
 
 import javafx.beans.property.StringProperty;
 
-public class BusTableData {
+public class ArrivalTableData {
+
     private StringProperty bus;
     private StringProperty schedule;
     private StringProperty currentStop;
     private StringProperty leftTime;
 
-    public BusTableData(StringProperty bus, StringProperty schedule, StringProperty currentStop, StringProperty leftTime) {
+    public ArrivalTableData(StringProperty bus, StringProperty schedule, StringProperty currentStop, StringProperty leftTime) {
         this.bus = bus;
         this.schedule = schedule;
         this.currentStop = currentStop;
