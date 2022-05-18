@@ -22,13 +22,9 @@ public class MyPageController implements Initializable {
     @FXML
     private Button btnSend;
     @FXML
-    private TableView<FacilityTableData> tblCF, tblFUF;
+    private TableView<FacilityTableData> tblFUF;
     @FXML
-    private TableView<RouteTableData> tblCR, tblFUR;
-    @FXML
-    private TableColumn<FacilityTableData, String> cfGcol, cfNcol, cfAcol;
-    @FXML
-    private TableColumn<RouteTableData, String> crScol, crEcol;
+    private TableView<RouteTableData> tblFUR;
     @FXML
     private TableColumn<FacilityTableData, String> fufGcol, fufNcol, fufAcol;
     @FXML
@@ -41,8 +37,6 @@ public class MyPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblName.setText(getUserName());
-        setCF();
-        setCR();
         setFUF();
         setFUR();
     }
@@ -51,25 +45,6 @@ public class MyPageController implements Initializable {
         String name = "user";
         // 접속된 유저의 이름 받기
         return name;
-    }
-
-    private void setCF(){
-        ObservableList<FacilityTableData> cfList = FXCollections.observableArrayList(
-                new FacilityTableData(new SimpleStringProperty("그룹"), new SimpleStringProperty("시설명"), new SimpleStringProperty("주소"))
-        );
-        cfGcol.setCellValueFactory(cellData -> cellData.getValue().getGroup());
-        cfNcol.setCellValueFactory(cellData -> cellData.getValue().getName());
-        cfAcol.setCellValueFactory(cellData -> cellData.getValue().getAddress());
-        tblCF.setItems(cfList);
-    }
-
-    private void setCR(){
-        ObservableList<RouteTableData> crList = FXCollections.observableArrayList(
-                new RouteTableData(new SimpleStringProperty("출발 정류장"), new SimpleStringProperty("도착 정류장"))
-        );
-        crScol.setCellValueFactory(cellData -> cellData.getValue().getStartSt());
-        crEcol.setCellValueFactory(cellData -> cellData.getValue().getEndSt());
-        tblCR.setItems(crList);
     }
 
     private void setFUF(){
@@ -89,25 +64,6 @@ public class MyPageController implements Initializable {
         furScol.setCellValueFactory(cellData -> cellData.getValue().getStartSt());
         furEcol.setCellValueFactory(cellData -> cellData.getValue().getEndSt());
         tblFUR.setItems(furList);
-    }
-
-    @FXML
-    public void clickFacilityFromCF(MouseEvent event) {
-        if(event.getClickCount() == 2){
-            facility[0] = tblCF.getSelectionModel().getSelectedItem().getGroup().toString();
-            facility[1] = tblCF.getSelectionModel().getSelectedItem().getName().toString();
-            facility[2] = tblCF.getSelectionModel().getSelectedItem().getAddress().toString();
-            routeSelected = false;
-        }
-    }
-
-    @FXML
-    public void clickRouteFromCR(MouseEvent event){
-        if(event.getClickCount() == 2){
-            route[0] = tblCR.getSelectionModel().getSelectedItem().getStartSt().toString();
-            route[1] = tblCR.getSelectionModel().getSelectedItem().getEndSt().toString();
-            routeSelected = true;
-        }
     }
 
     @FXML
