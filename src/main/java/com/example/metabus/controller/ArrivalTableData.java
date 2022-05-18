@@ -1,4 +1,4 @@
-package com.example.metabus;
+package com.example.metabus.controller;
 
 import javafx.beans.property.StringProperty;
 

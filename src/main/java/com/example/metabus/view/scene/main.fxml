@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="layoutGrid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="bg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.MainController">
+<GridPane fx:id="layoutGrid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="bg" stylesheets="@../../../../../../resources/com/example/metabus/stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.controller.MainController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="55.0" prefWidth="600.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="45.0" prefWidth="400.0" />
@@ -22,7 +22,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                      <image>
-                        <Image url="@../metabus/img/user.png" />
+                        <Image url="@../../../../../../resources/com/example/metabus/img/user.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -40,7 +40,7 @@
             <Button id="btnSearch" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
-                     <Image url="@../metabus/img/search.png" />
+                     <Image url="@../../../../../../resources/com/example/metabus/img/search.png" />
                   </ImageView>
                </graphic>
                <HBox.margin>
@@ -58,7 +58,7 @@
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
                <image>
-                  <Image url="@img/bus-stop.png" />
+                  <Image url="@../../../../../../resources/com/example/metabus/img/bus-stop.png" />
                </image>
                <HBox.margin>
                   <Insets bottom="10.0" left="30.0" right="10.0" />
@@ -79,7 +79,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="25.0" preserveRatio="true">
                      <image>
-                        <Image url="@img/logout.png" />
+                        <Image url="@../../../../../../resources/com/example/metabus/img/logout.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -91,7 +91,7 @@
       </HBox>
       <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="316.0" styleClass="bg" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <content>
-            <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" stylesheets="@stylesheet.css">
+            <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" stylesheets="@../../../../../../resources/com/example/metabus/stylesheet.css">
                <columns>
                   <TableColumn fx:id="busColumn" editable="false" prefWidth="70.0" sortable="false" text="버스" />
                   <TableColumn fx:id="scheColumn" editable="false" prefWidth="92.33331298828125" sortable="false" text="도착 시간" />

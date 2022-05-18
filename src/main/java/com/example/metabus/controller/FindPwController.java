@@ -1,4 +1,4 @@
-package com.example.metabus;
+package com.example.metabus.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

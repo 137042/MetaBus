@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="bg" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.LoginController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="bg" stylesheets="@../../../../../../resources/com/example/metabus/stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.controller.LoginController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -27,7 +27,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/bye.png" />
+                        <Image url="@../../../../../../resources/com/example/metabus/img/bye.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -39,7 +39,7 @@
       </HBox>
       <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1">
          <children>
-            <Label styleClass="title" stylesheets="@stylesheet.css" text="로그인">
+            <Label styleClass="title" stylesheets="@../../../../../../resources/com/example/metabus/stylesheet.css" text="로그인">
                <font>
                   <Font name="Malgun Gothic Bold" size="32.0" />
                </font>

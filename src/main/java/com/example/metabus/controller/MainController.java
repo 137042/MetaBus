@@ -1,5 +1,6 @@
-package com.example.metabus;
+package com.example.metabus.controller;
 
+import com.example.metabus.view.Popup;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -85,7 +87,8 @@ public class MainController implements Initializable {
     public void logOut(){
         Stage stage = (Stage) btnOut.getScene().getWindow();
         try {
-            Parent second = FXMLLoader.load(getClass().getResource("login.fxml"));
+            URL location = new File("src/main/java/com/example/metabus/view/scene/main.fxml").toURL();
+            Parent second = FXMLLoader.load(location);
             Scene scene = new Scene(second);
             stage.setResizable(false);
             stage.setMaximized(false);
