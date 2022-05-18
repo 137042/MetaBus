@@ -39,9 +39,9 @@
       </HBox>
       <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1">
          <children>
-            <Label text="LOGIN">
+            <Label styleClass="title" stylesheets="@stylesheet.css" text="로그인">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Malgun Gothic Bold" size="32.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -56,17 +56,17 @@
          <children>
             <VBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="ID">
+                  <Label text="아이디">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Malgun Gothic Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="PW">
+                  <Label text="비밀번호">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Malgun Gothic Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
@@ -98,24 +98,24 @@
             <Insets />
          </GridPane.margin>
          <children>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" styleClass="btn" text="LOGIN">
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" styleClass="btn" text="로그인">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="Malgun Gothic" size="20.0" />
                </font>
             </Button>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" styleClass="btn" text="REGISTER">
+                  <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" styleClass="btn" text="회원가입">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="Malgun Gothic" size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnFind" mnemonicParsing="false" onAction="#findPw" styleClass="btn" text="FIND PW">
+                  <Button fx:id="btnFind" mnemonicParsing="false" onAction="#findPw" styleClass="btn" text="비밀번호 찾기">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="Malgun Gothic" size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" />

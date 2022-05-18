@@ -18,6 +18,24 @@
     z-index: 0;
 }
 
+#info{
+    width: 150px;
+    text-align: center;
+}
+
+#popup{
+    display: inline-block;
+    width: 150px;
+    font-size: small;
+    font-weight: 700;
+    text-align: center;
+    color: #00000050;
+}
+
+#popup:hover{
+    color: #000000;
+}
+
 #add_start, #add_end, #clear{
     display: inline-block;
     color: #FFFFFF;

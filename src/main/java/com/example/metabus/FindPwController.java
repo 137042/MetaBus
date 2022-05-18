@@ -22,7 +22,7 @@ public class FindPwController implements Initializable {
     public void findPw(){
         txtId.getText();
         // checkId and get password
-        lblStmt.setText("Your Password: ");
+        lblStmt.setText("비밀번호: ");
         lblPw.setText("samplePW");
     }
 

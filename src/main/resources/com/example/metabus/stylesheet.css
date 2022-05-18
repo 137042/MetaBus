@@ -4,7 +4,7 @@
 }
 
 .input{
-    -fx-background-color: #eceff1;
+    -fx-background-color: #ECEFF1;
 }
 
 .btn{
@@ -12,7 +12,7 @@
 }
 
 .btn:hover{
-    -fx-background-color: #eceff1;
+    -fx-background-color: #ECEFF1;
 }
 
 .table-view{
@@ -22,11 +22,11 @@
 }
 
 .table-view .column-header{
-    -fx-background-color: #eceff1;
+    -fx-background-color: #ECEFF1;
 }
 
 .titled-pane > .title{
-    -fx-background-color: -fx-box-border, -fx-inner-border, #eceff1;
+    -fx-background-color: -fx-box-border, -fx-inner-border, #ECEFF1;
     -fx-background-insets: 0, 1, 2;
 }
 

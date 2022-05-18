@@ -30,10 +30,13 @@
                   <Insets bottom="5.0" />
                </HBox.margin>
             </Button>
-            <TextField prefHeight="30.0" prefWidth="303.0" promptText="Enter something like hospital, theatre..." styleClass="input">
+            <TextField prefHeight="30.0" prefWidth="303.0" promptText="병원, 영화관 등의 시설을 입력하세요" styleClass="input">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" />
-               </HBox.margin></TextField>
+               </HBox.margin>
+               <font>
+                  <Font name="Malgun Gothic Semilight" size="12.0" />
+               </font></TextField>
             <Button id="btnSearch" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
@@ -61,9 +64,9 @@
                   <Insets bottom="10.0" left="30.0" right="10.0" />
                </HBox.margin>
             </ImageView>
-            <Label prefHeight="40.0" prefWidth="250.0" text="BUS INFO" textAlignment="CENTER">
+            <Label prefHeight="40.0" prefWidth="250.0" text="버스 도착 정보" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="Malgun Gothic Bold" size="24.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="10.0" />
@@ -90,10 +93,10 @@
         <content>
             <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" stylesheets="@stylesheet.css">
                <columns>
-                  <TableColumn fx:id="busColumn" editable="false" prefWidth="70.0" sortable="false" text="bus" />
-                  <TableColumn fx:id="scheColumn" editable="false" prefWidth="92.33331298828125" sortable="false" text="schedule" />
-                  <TableColumn fx:id="stopColumn" editable="false" prefWidth="78.3333740234375" sortable="false" text="cur_stop" />
-                  <TableColumn fx:id="leftColumn" editable="false" prefWidth="71.6666259765625" sortable="false" text="left" />
+                  <TableColumn fx:id="busColumn" editable="false" prefWidth="70.0" sortable="false" text="버스" />
+                  <TableColumn fx:id="scheColumn" editable="false" prefWidth="92.33331298828125" sortable="false" text="도착 시간" />
+                  <TableColumn fx:id="stopColumn" editable="false" prefWidth="78.3333740234375" sortable="false" text="현재 위치" />
+                  <TableColumn fx:id="leftColumn" editable="false" prefWidth="71.6666259765625" sortable="false" text="남은 정류장" />
                </columns>
                <padding>
                   <Insets top="-1.0" />

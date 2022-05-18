@@ -15,8 +15,9 @@
 	
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=10bb6b4f7e2c5ce60d5c3ae617ea2aa8"></script>
 	<script>
+		// 상수 선언
 		const DEFAULT_POSITION = new kakao.maps.LatLng(36.145895067603114, 128.39279933712692);
-		const MAX_DEFAULT_MARKER_CNT = 5;
+		const MAX_COLOR_MARKER_CNT = 5;
 		const MAX_TOTAL_MARKER_CNT = 20;
 		const MARKER_ARRAY = [
 			new kakao.maps.MarkerImage('/mark.png', new kakao.maps.Size(36, 36)),
@@ -30,7 +31,7 @@
 		const FAC_MARK = new kakao.maps.MarkerImage('/mark-building.png', new kakao.maps.Size(36, 36));
 
 
-		// map 생성
+		// 지도 생성
 		var mapContainer = document.getElementById('map'),
 			mapOption = { 
 				// center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -39,7 +40,8 @@
 			};
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
-		// 현재 위치를 map center로 지정
+		
+		// 현재 위치 좌표값을 지도 중심으로 지정
 		// if (navigator.geolocation) {
 		// 	navigator.geolocation.getCurrentPosition(function(position) {
 		// 		var lat = position.coords.latitude,
@@ -55,13 +57,13 @@
 		// }
 
 		
-		// 알림 마커 생성
+		// 알림 핀 생성 및 제어
 		var pin = new kakao.maps.Marker({ 
 			position: DEFAULT_POSITION
 		});
 		pin.setMap(map);
 
-		let pinContent = '<h6>1회 클릭 시 마커 색상이 바뀌며<br>4회 클릭 시 마커가 삭제됩니다.<br>본 마커는 클릭 시 사라집니다.</h6>'
+		let pinContent = '<h6 id="info">1회 클릭 시 마커 색상 변경<br>마커 팝업 클릭 시 마커 삭제<br>본 알림 핀은 클릭 시 사라짐</h6>'
 		var pinInfo = new kakao.maps.InfoWindow({
 			position : map.getCenter(),
 			content : pinContent 
@@ -74,61 +76,121 @@
 		});
 
 
-		// 일반 마커 제어
+		// 일반 마커 생성
 		var markerList = [],
 			selectedMarker = null,
-			markTotalCnt = 0,
-			defaultCnt = 0, yellowCnt = 0, greenCnt = 0, purpleCnt = 0;
+			focusedInfoWindow = null,
+			markTotalCnt = 0, yellowCnt = 0, greenCnt = 0, purpleCnt = 0;
+
+		var content,
+			overlay = new kakao.maps.CustomOverlay({
+			map: map
+		});
 
 		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 			if(markTotalCnt < MAX_TOTAL_MARKER_CNT){
 				let latlng = mouseEvent.latLng;
 				let marker = new kakao.maps.Marker({
 					position: DEFAULT_POSITION,
-					image: MARKER_ARRAY[0]
+					image: MARKER_ARRAY[0],
+					map: map,
+					draggable: true
 				});
 				marker.setPosition(latlng);
-				marker.setMap(map);
-				marker.setDraggable(true);
+				markerList.push(marker);
+				markTotalCnt++;
+				
 				kakao.maps.event.addListener(marker, 'click', function(){
 					selectedMarker = marker;
 					changeColor();
 				});
-				markTotalCnt++;
-				markerList.push(marker);
+
+				var iwContent = `<a id="popup" onclick="deleteMarker()">마커 삭제</a>`;
+				var infoWindow = new kakao.maps.InfoWindow({
+					position : map.getCenter(),
+					content : iwContent 
+				});
+				
+				kakao.maps.event.addListener(marker, 'mouseover', function() {
+					infoWindow.open(map, marker);
+					focusedInfoWindow = infoWindow;
+					selectedMarker = marker;
+				});
+				kakao.maps.event.addListener(marker, 'mouseout', function() {
+					setTimeout(() => infoWindow.close(), 3000);
+				});
 			}
 		});
+		
+		function deleteMarker(){
+			focusedInfoWindow.close();
+			selectedMarker.setMap(null);
 
-		function changeColor() {
-			let curImg = selectedMarker.getImage(),
-				nextImg;
-			if(curImg == MARKER_ARRAY[0]){
-				selectedMarker.setImage(MARKER_ARRAY[1]);
-			}
+			let curImg = selectedMarker.getImage();
 			if(curImg == MARKER_ARRAY[1]){
-				selectedMarker.setImage(MARKER_ARRAY[2]);
+				yellowCnt--;
 			}
 			if(curImg == MARKER_ARRAY[2]){
-				selectedMarker.setImage(MARKER_ARRAY[3]);
+				greenCnt--;
 			}
 			if(curImg == MARKER_ARRAY[3]){
-				selectedMarker.setMap(null);
-				markTotalCnt--;
+				purpleCnt--;
 			}
+			markTotalCnt--;
 		}
 
-		var btnClear = document.querySelector("#clear");
-		btnClear.addEventListener("click", (event) => {
-			while(markerList.length != 0){
-				var marker = markerList.pop();
-				marker.setMap(null);
+
+		// 일반 마커 제어
+		function changeColor() {
+			let curImg = selectedMarker.getImage();
+			if(curImg == MARKER_ARRAY[0]){
+				if(yellowCnt < MAX_COLOR_MARKER_CNT){
+					selectedMarker.setImage(MARKER_ARRAY[1]);
+					yellowCnt++;
+				}
+				else if(greenCnt < MAX_COLOR_MARKER_CNT){
+					selectedMarker.setImage(MARKER_ARRAY[2]);
+					greenCnt++;
+				}
+				else if(purplCnt < MAX_COLOR_MARKER_CNT){
+					selectedMarker.setImage(MARKER_ARRAY[3]);
+					purpleCnt++;
+				}
 			}
-			markTotalCnt = 0;
-			startMarkerExist = endMarkerExist = false;
-		})
 
+			if(curImg == MARKER_ARRAY[1]){
+				if(greenCnt < MAX_COLOR_MARKER_CNT){
+					selectedMarker.setImage(MARKER_ARRAY[2]);
+					greenCnt++;
+				}
+				else if(purpleCnt < MAX_COLOR_MARKER_CNT){
+					selectedMarker.setImage(MARKER_ARRAY[3]);
+					purpleCnt++;
+				}
+				else{
+					selectedMarker.setImage(MARKER_ARRAY[0]);
+				}
+				yellowCnt--;
+			}
 
-		// 출발지 마커, 도착지 마커 제어
+			if(curImg == MARKER_ARRAY[2]){
+				if(purpleCnt < MAX_COLOR_MARKER_CNT){
+					selectedMarker.setImage(MARKER_ARRAY[3]);
+				}
+				else{
+					selectedMarker.setImage(MARKER_ARRAY[0]);
+				}
+				greenCnt--;
+			}
+			
+			if(curImg == MARKER_ARRAY[3]){
+				selectedMarker.setImage(MARKER_ARRAY[0]);
+				purpleCnt--;
+			}
+		}
+		
+
+		// 출발지 마커, 도착지 마커 생성 및 제어
 		var startMarkerExist = false;
 			btnStart = document.querySelector("#add_start");
 		btnStart.addEventListener("click", (event) => {
@@ -168,6 +230,19 @@
 				});
 			}
 		})
+
+
+		// 마커 일괄 삭제
+		var btnClear = document.querySelector("#clear");
+		btnClear.addEventListener("click", (event) => {
+			while(markerList.length != 0){
+				var marker = markerList.pop();
+				marker.setMap(null);
+			}
+			markTotalCnt = yellowCnt = greenCnt = purpleCnt = 0;
+			startMarkerExist = endMarkerExist = false;
+		})
+
 
 	</script>
 </body>
