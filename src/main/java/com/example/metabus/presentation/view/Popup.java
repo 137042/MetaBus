@@ -1,4 +1,4 @@
-package com.example.metabus.view;
+package com.example.metabus.presentation.view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ import java.net.URL;
 public class Popup {
 
     public static void regDisplay() throws IOException {
-        URL location = new File("src/main/java/com/example/metabus/view/scene/register.fxml").toURL();
+        URL location = new File("src/main/resources/com/example/metabus/scene/register.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Scene scene = new Scene(fxmlLoader.load(location), 300, 300);
         Stage popup = new Stage();
@@ -26,7 +26,7 @@ public class Popup {
     }
 
     public static void findPwDisplay() throws IOException {
-        URL location = new File("src/main/java/com/example/metabus/view/scene/findPw.fxml").toURL();
+        URL location = new File("src/main/resources/com/example/metabus/scene/findPw.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Scene scene = new Scene(fxmlLoader.load(location), 300, 300);
         Stage popup = new Stage();
@@ -40,7 +40,7 @@ public class Popup {
     }
 
     public static void myPageDisplay() throws IOException {
-        URL location = new File("src/main/java/com/example/metabus/view/scene/myPage.fxml").toURL();
+        URL location = new File("src/main/resources/com/example/metabus/scene/myPage.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Scene scene = new Scene(fxmlLoader.load(location), 600, 400);
         Stage popup = new Stage();

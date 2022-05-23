@@ -1,4 +1,4 @@
-package com.example.metabus;
+package com.example.metabus.presentation.view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        URL location = new File("src/main/java/com/example/metabus/view/scene/login.fxml").toURL();
+        URL location = new File("src/main/resources/com/example/metabus/scene/login.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Scene scene = new Scene(fxmlLoader.load(location), 1000, 600);
         stage.setTitle("MetaBus");

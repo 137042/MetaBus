@@ -1,6 +1,6 @@
-package com.example.metabus.controller;
+package com.example.metabus.presentation.controller;
 
-import com.example.metabus.view.Popup;
+import com.example.metabus.presentation.view.Popup;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,7 +87,7 @@ public class MainController implements Initializable {
     public void logOut(){
         Stage stage = (Stage) btnOut.getScene().getWindow();
         try {
-            URL location = new File("src/main/java/com/example/metabus/view/scene/main.fxml").toURL();
+            URL location = new File("src/main/resources/com/example/metabus/scene/login.fxml").toURI().toURL();
             Parent second = FXMLLoader.load(location);
             Scene scene = new Scene(second);
             stage.setResizable(false);

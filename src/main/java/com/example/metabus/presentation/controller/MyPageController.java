@@ -1,4 +1,4 @@
-package com.example.metabus.controller;
+package com.example.metabus.presentation.controller;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
