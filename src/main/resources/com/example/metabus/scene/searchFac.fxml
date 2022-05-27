@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" styleClass="bg" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.presentation.controller.SearchFacController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="106.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="35.0" styleClass="netmarbleB" text="목적지 설정">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="350.0" styleClass="box">
+                     <children>
+                        <TextField fx:id="txtFac" prefHeight="35.0" prefWidth="300.0" styleClass="input">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#searchFacility" prefHeight="34.0" prefWidth="34.0" styleClass="just-btn" stylesheets="@../stylesheet.css">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="25.0" right="20.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <Button fx:id="btnSend" mnemonicParsing="false" onAction="#sendData" prefHeight="40.0" prefWidth="40.0" styleClass="btn">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/send.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="15.0" />
+               </padding>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="330.0" prefWidth="600.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="540.0">
+                     <children>
+                        <TableView fx:id="tblFacility" prefHeight="297.0" prefWidth="560.0">
+                          <columns>
+                            <TableColumn fx:id="groupCol" prefWidth="90" text="그룹" />
+                            <TableColumn fx:id="nameCol" prefWidth="140" text="시설명" />
+                              <TableColumn fx:id="addressCol" prefWidth="325" text="주소" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+            </ScrollPane>
+         </children></VBox>
+   </children>
+</Pane>

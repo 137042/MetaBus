@@ -22,7 +22,7 @@ public class Popup {
         popup.setMaximized(false);
         popup.setFullScreen(false);
         popup.setScene(scene);
-        popup.show();
+        popup.showAndWait();
     }
 
     public static void findPwDisplay() throws IOException {
@@ -36,7 +36,7 @@ public class Popup {
         popup.setMaximized(false);
         popup.setFullScreen(false);
         popup.setScene(scene);
-        popup.show();
+        popup.showAndWait();
     }
 
     public static void myPageDisplay() throws IOException {
@@ -50,7 +50,21 @@ public class Popup {
         popup.setMaximized(false);
         popup.setFullScreen(false);
         popup.setScene(scene);
-        popup.show();
+        popup.showAndWait();
+    }
+
+    public static void searchFacDisplay() throws IOException {
+        URL location = new File("src/main/resources/com/example/metabus/scene/searchFac.fxml").toURI().toURL();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Scene scene = new Scene(fxmlLoader.load(location), 600, 400);
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setTitle("MetaBus - Search Facility");
+        popup.setResizable(false);
+        popup.setMaximized(false);
+        popup.setFullScreen(false);
+        popup.setScene(scene);
+        popup.showAndWait();
     }
 
 }

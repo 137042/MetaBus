@@ -18,7 +18,7 @@
    <children>
       <HBox alignment="BOTTOM_RIGHT">
          <children>
-            <Button id="btnSearch" fx:id="btnUser" alignment="CENTER" contentDisplay="CENTER" layoutX="535.0" layoutY="60.0" mnemonicParsing="false" onAction="#openMyPage" prefHeight="40.0" prefWidth="40.0" styleClass="btn">
+            <Button id="btnSearch" fx:id="btnUser" alignment="CENTER" contentDisplay="CENTER" layoutX="535.0" layoutY="60.0" mnemonicParsing="false" onAction="#openMyPage" prefHeight="40.0" prefWidth="45.0" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                      <image>
@@ -27,24 +27,24 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="10.0" />
                </HBox.margin>
             </Button>
-            <TextField prefHeight="30.0" prefWidth="303.0" promptText="병원, 영화관 등의 시설을 입력하세요" styleClass="input">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" />
-               </HBox.margin>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="330.0" styleClass="netmarbleB" text="출발 및 도착 정류장 정보" textAlignment="CENTER">
                <font>
-                  <Font name="Malgun Gothic Semilight" size="12.0" />
-               </font></TextField>
-            <Button id="btnSearch" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btn">
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin></Label>
+            <Button id="btnSearch" fx:id="btnBusStopClear" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clearBusStop" prefHeight="40.0" prefWidth="45.0" styleClass="btn">
                <graphic>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
-                     <Image url="@../img/search.png" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <Image url="@../img/rubber.png" />
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets bottom="10.0" left="15.0" right="30.0" />
+                  <Insets bottom="10.0" right="30.0" />
                </HBox.margin></Button>
          </children>
          <opaqueInsets>
@@ -54,6 +54,99 @@
             <Insets />
          </GridPane.margin>
       </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+         <children>
+            <HBox alignment="TOP_CENTER" minHeight="35.0" prefHeight="0.0" prefWidth="449.0">
+               <children>
+                  <Label fx:id="lblStart" alignment="CENTER" prefHeight="27.0" prefWidth="280.0" styleClass="netmarbleM" text="출발 시설이 이곳에 노출됩니다">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Malgun Gothic" size="12.0" />
+                     </font></Label>
+                  <Button fx:id="btnStartSearch" mnemonicParsing="false" onAction="#searchStartFac" prefHeight="27.0" prefWidth="40.0" styleClass="btn">
+                     <font>
+                        <Font name="Malgun Gothic" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="140.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblStart" prefHeight="140.0" prefWidth="420.0">
+                          <columns>
+                            <TableColumn fx:id="startCheckCol" prefWidth="40.0" />
+                            <TableColumn fx:id="startIdCol" prefWidth="75.0" text="서비스ID" />
+                              <TableColumn fx:id="startNameCol" prefWidth="300.0" text="버스정류장" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </ScrollPane>
+            <HBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="lblEnd" alignment="CENTER" prefHeight="27.0" prefWidth="280.0" styleClass="netmarbleM" text="도착 시설이 이곳에 노출됩니다">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Malgun Gothic" size="12.0" />
+                     </font></Label>
+                  <Button fx:id="btnEndSearch" mnemonicParsing="false" onAction="#searchEndFac" prefHeight="27.0" prefWidth="40.0" styleClass="btn">
+                     <font>
+                        <Font name="Malgun Gothic" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+               <padding>
+                  <Insets bottom="8.0" top="24.0" />
+               </padding>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="140.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tblEnd" prefHeight="140.0" prefWidth="420.0">
+                          <columns>
+                            <TableColumn fx:id="endCheckCol" prefWidth="40.0" />
+                            <TableColumn fx:id="endIdCol" prefWidth="75.0" text="서비스ID" />
+                              <TableColumn fx:id="endNameCol" prefWidth="300.0" text="버스정류장" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button fx:id="btnRouteCheck" mnemonicParsing="false" onAction="#checkRoute" prefHeight="40.0" prefWidth="430.0" styleClass="btn-txt-small" text="선택한 정류장을 지나는 버스를 확인하기">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="70.0" left="100.0" right="20.0" top="15.0" />
+         </padding>
+      </VBox>
       <HBox alignment="BOTTOM_LEFT" GridPane.columnIndex="1">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
@@ -64,17 +157,26 @@
                   <Insets bottom="10.0" left="30.0" right="10.0" />
                </HBox.margin>
             </ImageView>
-            <Label prefHeight="40.0" prefWidth="250.0" text="버스 도착 정보" textAlignment="CENTER">
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="210.0" styleClass="netmarbleB" text="버스 도착 정보" textAlignment="CENTER">
                <font>
-                  <Font name="Malgun Gothic Bold" size="24.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="10.0" />
                </HBox.margin>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
             </Label>
+            <Button fx:id="btnBusRefresh" mnemonicParsing="false" onAction="#refreshBus" prefHeight="40.0" prefWidth="45.0" styleClass="btn">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <Button fx:id="btnOut" alignment="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="42.0" prefWidth="42.0" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="25.0" preserveRatio="true">
@@ -84,7 +186,7 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets bottom="30.0" left="60.0" />
+                  <Insets bottom="35.0" left="60.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -93,10 +195,10 @@
         <content>
             <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" stylesheets="@../stylesheet.css">
                <columns>
-                  <TableColumn fx:id="busColumn" editable="false" prefWidth="70.0" sortable="false" text="버스" />
-                  <TableColumn fx:id="scheColumn" editable="false" prefWidth="92.33331298828125" sortable="false" text="도착 시간" />
-                  <TableColumn fx:id="stopColumn" editable="false" prefWidth="78.3333740234375" sortable="false" text="현재 위치" />
-                  <TableColumn fx:id="leftColumn" editable="false" prefWidth="71.6666259765625" sortable="false" text="남은 정류장" />
+                  <TableColumn fx:id="startCol" editable="false" prefWidth="85" sortable="false" text="출발 정류장" />
+                  <TableColumn fx:id="endCol" editable="false" prefWidth="85" sortable="false" text="도착 정류장" />
+                  <TableColumn fx:id="busCol" editable="false" prefWidth="71" sortable="false" text="버스 번호" />
+                  <TableColumn fx:id="leftCol" editable="false" prefWidth="70" sortable="false" text="남은 시간" />
                </columns>
                <padding>
                   <Insets top="-1.0" />

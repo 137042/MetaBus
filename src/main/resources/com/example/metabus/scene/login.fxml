@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -39,9 +40,9 @@
       </HBox>
       <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1">
          <children>
-            <Label styleClass="title" stylesheets="@../stylesheet.css" text="로그인">
+            <Label styleClass="netmarbleB" stylesheets="@../stylesheet.css" text="로그인">
                <font>
-                  <Font name="Malgun Gothic Bold" size="32.0" />
+                  <Font size="36.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -56,35 +57,48 @@
          <children>
             <VBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="아이디">
+                  <Label styleClass="netmarbleM" text="아이디">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="netmarbleM" text="비밀번호">
                      <font>
                         <Font name="Malgun Gothic Bold" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label text="비밀번호">
-                     <font>
-                        <Font name="Malgun Gothic Bold" size="24.0" />
-                     </font>
                   </Label>
                </children>
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER_LEFT">
+            <VBox alignment="CENTER_LEFT" maxWidth="210.0">
                <children>
-                  <TextField fx:id="txtId" onInputMethodTextChanged="#checkValidId" styleClass="input">
+                  <Label fx:id="lblErrId" alignment="CENTER" prefWidth="210.0" styleClass="ibmM" textFill="#cc0404">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtId" onMouseClicked="#clearLbl" prefWidth="210.0" styleClass="input">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets />
                      </VBox.margin>
                   </TextField>
-                  <PasswordField fx:id="txtPw" onInputMethodTextChanged="#checkValidPw" styleClass="input">
+                  <Label fx:id="lblErrPw" alignment="CENTER" prefWidth="210.0" styleClass="ibmM" textFill="#cc0404">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="txtPw" onMouseClicked="#clearLbl" styleClass="input">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -98,28 +112,40 @@
             <Insets />
          </GridPane.margin>
          <children>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" styleClass="btn" text="로그인">
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" text="접속">
                <font>
                   <Font name="Malgun Gothic" size="20.0" />
                </font>
+               <styleClass>
+                  <String fx:value="btn-txt-medium" />
+                  <String fx:value="netmarbleM" />
+               </styleClass>
             </Button>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" styleClass="btn" text="회원가입">
+                  <Button fx:id="btnReg" mnemonicParsing="false" onAction="#register" text="회원가입">
                      <font>
                         <Font name="Malgun Gothic" size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <styleClass>
+                        <String fx:value="btn-txt-small" />
+                        <String fx:value="netmarbleM" />
+                     </styleClass>
                   </Button>
-                  <Button fx:id="btnFind" mnemonicParsing="false" onAction="#findPw" styleClass="btn" text="비밀번호 찾기">
+                  <Button fx:id="btnFind" mnemonicParsing="false" onAction="#findPw" text="비밀번호 찾기">
                      <font>
                         <Font name="Malgun Gothic" size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
+                     <styleClass>
+                        <String fx:value="btn-txt-small" />
+                        <String fx:value="netmarbleM" />
+                     </styleClass>
                   </Button>
                </children>
                <padding>

@@ -26,4 +26,16 @@ public class FacilityTableData {
         return address;
     }
 
+    public void setGroup(StringProperty g){
+        group = g;
+    }
+
+    public void setName(StringProperty n){
+        name = n;
+    }
+
+    public void setAddress(StringProperty a){
+        address = a;
+    }
+
 }

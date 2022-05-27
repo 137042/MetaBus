@@ -1,3 +1,27 @@
+@font-face{
+    src: url('fonts/IBMPlexSansKR-Medium.ttf');
+}
+
+@font-face{
+    src: url('fonts/netmarbleM.ttf');
+}
+
+@font-face{
+    src: url('fonts/netmarbleB.ttf');
+}
+
+.ibmM{
+    -fx-font-family: 'IBM Plex Sans KR Medium';
+}
+
+.netmarbleM{
+    -fx-font-family: 'netmarble Medium';
+}
+
+.netmarbleB{
+    -fx-font-family: 'netmarble Bold';
+}
+
 .bg{
     -fx-background-color: #FEFEFE;
     -fx-border-color:  #FEFEFE;
@@ -7,11 +31,35 @@
     -fx-background-color: #ECEFF1;
 }
 
-.btn{
+.btn, .btn-txt-medium, .btn-txt-small, .btn-txt-smaller{
     -fx-background-color: #FEFEFE;
 }
 
-.btn:hover{
+.btn:hover, .btn-txt-medium:hover, .btn-txt-small:hover, .btn-txt-smaller:hover{
+    -fx-background-color: #ECEFF1;
+}
+
+.btn-txt-medium, .btn-txt-medium:hover{
+    -fx-font-family: 'netmarble Medium';
+    -fx-font-size: 20px;
+}
+
+.btn-txt-small, .btn-txt-small:hover{
+    -fx-font-family: 'netmarble Medium';
+    -fx-font-size: 16px;
+}
+
+.btn-txt-smaller, .btn-txt-smaller:hover{
+    -fx-font-family: 'netmarble Medium';
+    -fx-font-size: 12px;
+}
+
+.box{
+    -fx-background-color: #ECEFF1;
+    -fx-background-radius: 5px;
+}
+
+.just-btn{
     -fx-background-color: #ECEFF1;
 }
 
@@ -23,6 +71,10 @@
 
 .table-view .column-header{
     -fx-background-color: #ECEFF1;
+}
+
+.table-view .table-column{
+    -fx-alignment: CENTER;
 }
 
 .titled-pane > .title{

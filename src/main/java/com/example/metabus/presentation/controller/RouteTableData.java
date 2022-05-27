@@ -19,4 +19,13 @@ public class RouteTableData {
     public StringProperty getEndSt(){
         return endSt;
     }
+
+    public void setStartSt(StringProperty ss){
+        startSt = ss;
+    }
+
+    public void setEndSt(StringProperty es){
+        endSt = es;
+    }
+
 }

@@ -1,34 +1,52 @@
 package com.example.metabus.presentation.controller;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 
 public class ArrivalTableData {
 
+    private IntegerProperty startStation;
+    private IntegerProperty endStation;
     private StringProperty bus;
-    private StringProperty schedule;
-    private StringProperty currentStop;
-    private StringProperty leftTime;
+    private IntegerProperty leftTime;
 
-    public ArrivalTableData(StringProperty bus, StringProperty schedule, StringProperty currentStop, StringProperty leftTime) {
+    public ArrivalTableData(IntegerProperty startStation, IntegerProperty endStation, StringProperty bus, IntegerProperty leftTime) {
+        this.startStation = startStation;
+        this.endStation = endStation;
         this.bus = bus;
-        this.schedule = schedule;
-        this.currentStop = currentStop;
         this.leftTime = leftTime;
+    }
+
+    public IntegerProperty getStartStation() {
+        return startStation;
+    }
+
+    public IntegerProperty getEndStation() {
+        return endStation;
     }
 
     public StringProperty getBus() {
         return bus;
     }
 
-    public StringProperty getSchedule() {
-        return schedule;
-    }
-
-    public StringProperty getCurrentStop() {
-        return currentStop;
-    }
-
-    public StringProperty getLeftTime() {
+    public IntegerProperty getLeftTime() {
         return leftTime;
     }
+
+    public void setStartStation(IntegerProperty ss){
+        startStation = ss;
+    }
+
+    public void setEndStation(IntegerProperty es) {
+        endStation = es;
+    }
+
+    public void setBus(StringProperty b){
+        bus = b;
+    }
+
+    public void setLeftTime(IntegerProperty lt){
+        leftTime = lt;
+    }
+
 }
