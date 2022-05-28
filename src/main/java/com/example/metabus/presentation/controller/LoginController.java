@@ -1,6 +1,8 @@
 package com.example.metabus.presentation.controller;
 
 import com.example.metabus.presentation.view.Popup;
+import com.example.metabus.service.MemberService;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,12 +27,6 @@ public class LoginController {
     private Button btnLogin, btnClose;
     @FXML
     private Label lblErrId, lblErrPw;
-
-    private final String PATH_MAIN_PAGE = "src/main/resources/com/example/metabus/scene/main.fxml";
-    private final String ERROR_EMPTY_ID = "아이디를 입력해주세요";
-    private final String ERROR_EMPTY_PW = "비밀번호를 입력해주세요";
-    private final String ERROR_WRONG_ID = "아이디를 다시 입력해주세요";
-    private final String ERROR_WRONG_PW = "비밀번호를 다시 입력해주세요";
 
     public void clearLbl(){
         lblErrId.setText("");
@@ -69,7 +65,10 @@ public class LoginController {
     }
 
     private boolean isValidReq(String id, String pw){
+        final String ERROR_EMPTY_ID = "아이디를 입력해주세요";
+        final String ERROR_EMPTY_PW = "비밀번호를 입력해주세요";
         boolean res = true;
+
         if(id.equals("")){
             lblErrId.setText(ERROR_EMPTY_ID);
             res = false;
@@ -82,9 +81,11 @@ public class LoginController {
     }
 
     private boolean isCorrectPw(String id, String pw){
-        // query id pw check
-        String db_pw = ".";
-        if(db_pw.equals(pw)){
+        final String ERROR_WRONG_ID = "아이디를 다시 입력해주세요";
+        final String ERROR_WRONG_PW = "비밀번호를 다시 입력해주세요";
+
+        MemberService memberService = new MemberService();
+        if(memberService.UserValidation(id, pw)){
             return true;
         }
         else{
@@ -95,6 +96,7 @@ public class LoginController {
     }
 
     private void goMainPage() {
+        final String PATH_MAIN_PAGE = "src/main/resources/com/example/metabus/scene/main.fxml";
         Stage stage = (Stage) btnLogin.getScene().getWindow();
         try {
             URL location = new File(PATH_MAIN_PAGE).toURI().toURL();

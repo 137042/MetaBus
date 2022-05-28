@@ -5,17 +5,22 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class BusStation {
+
+    private int privateId;
     private int apiID;
     private int serviceId;
     private String name;
     private double latitude;
     private double longitude;
 
-
-
-
-
+    public int getPrivateId() {
+        return privateId;
+    }
+    public void setPrivateId(int privateId) {
+        this.privateId = privateId;
+    }
     public int getApiID() {
         return apiID;
     }

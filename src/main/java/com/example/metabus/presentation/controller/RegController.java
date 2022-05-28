@@ -1,5 +1,7 @@
 package com.example.metabus.presentation.controller;
 
+import com.example.metabus.service.MemberService;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,11 +20,6 @@ public class RegController {
     @FXML
     private Label lblErrName, lblErrId, lblErrPw;
 
-    private final String ERROR_EMPTY_NAME = "이름을 입력해주세요";
-    private final String ERROR_EMPTY_ID = "아이디를 입력해주세요";
-    private final String ERROR_EMPTY_PW = "비밀번호를 입력해주세요";
-    private final String ERROR_DUPLICATE_ID = "해당 아이디는 사용할 수 없어요";
-
     public void clearLabel(){
         lblErrName.setText("");
         lblErrId.setText("");
@@ -30,12 +27,14 @@ public class RegController {
     }
 
     public void register(){
+        final String ERROR_DUPLICATE_ID = "해당 아이디는 사용할 수 없어요";
+
         String name = txtName.getText().trim();
         String id = txtId.getText().trim();
         String pw = txtPw.getText().trim();
 
         if(isValidReq(name, id, pw)){
-            if(isNewId(name, id, pw)){
+            if(canRegister(name, id, pw)){
                 Stage stage = (Stage) btnReg.getScene().getWindow();
                 stage.close();
             }
@@ -45,13 +44,11 @@ public class RegController {
         }
     }
 
-    private void clearInput(){
-        txtName.clear();
-        txtId.clear();
-        txtPw.clear();
-    }
-
     private boolean isValidReq(String name, String id, String pw){
+        final String ERROR_EMPTY_NAME = "이름을 입력해주세요";
+        final String ERROR_EMPTY_ID = "아이디를 입력해주세요";
+        final String ERROR_EMPTY_PW = "비밀번호를 입력해주세요";
+
         boolean res = true;
         if(name.equals("")){
             lblErrName.setText(ERROR_EMPTY_NAME);
@@ -68,15 +65,9 @@ public class RegController {
         return res;
     }
 
-    private boolean isNewId(String name, String id, String pw){
-        // query -> error occur(duplicate id) -> false
-        try{
-
-        }catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    private boolean canRegister(String name, String id, String pw){
+        MemberService memberService = new MemberService();
+        return memberService.signUp(name, id, pw);
     }
 
 }

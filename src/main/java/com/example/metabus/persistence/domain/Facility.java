@@ -6,18 +6,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Facility {
-    private int id;
+    private int privateId;
     private String name;
     private String address;
     private double latitude;
     private double longitude;
 
     public int getId() {
-        return id;
+        return privateId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int privateId) {
+        this.privateId = privateId;
     }
 
     public String getName() {

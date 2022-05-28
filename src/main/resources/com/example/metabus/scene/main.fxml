@@ -37,7 +37,7 @@
                <HBox.margin>
                   <Insets bottom="10.0" />
                </HBox.margin></Label>
-            <Button id="btnSearch" fx:id="btnBusStopClear" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clearBusStop" prefHeight="40.0" prefWidth="45.0" styleClass="btn">
+            <Button id="btnSearch" fx:id="btnBusStopClear" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clearBusStop" prefHeight="40.0" prefWidth="45.0" styleClass="btn-txt-medium">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
                      <Image url="@../img/rubber.png" />
@@ -82,7 +82,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tblStart" prefHeight="140.0" prefWidth="420.0">
+                        <TableView fx:id="tblStart" prefHeight="140.0" prefWidth="420.0" styleClass="ibmM">
                           <columns>
                             <TableColumn fx:id="startCheckCol" prefWidth="40.0" />
                             <TableColumn fx:id="startIdCol" prefWidth="75.0" text="서비스ID" />
@@ -117,7 +117,7 @@
                   <Insets bottom="8.0" top="24.0" />
                </padding>
             </HBox>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="140.0" prefWidth="200.0">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="140.0" prefWidth="200.0" styleClass="ibmM">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
@@ -193,7 +193,7 @@
       </HBox>
       <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="316.0" styleClass="bg" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <content>
-            <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" stylesheets="@../stylesheet.css">
+            <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" styleClass="ibmM" stylesheets="@../stylesheet.css">
                <columns>
                   <TableColumn fx:id="startCol" editable="false" prefWidth="85" sortable="false" text="출발 정류장" />
                   <TableColumn fx:id="endCol" editable="false" prefWidth="85" sortable="false" text="도착 정류장" />

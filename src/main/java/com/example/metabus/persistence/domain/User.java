@@ -7,18 +7,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
 
+    private int privateId;
     private String name;
     private String loginId;
     private String loginPassword;
     private int groupId;
 
 
-
     public User(String name, String loginId, String loginPassword) {
         this.name = name;
         this.loginId = loginId;
         this.loginPassword = loginPassword;
+
     }
+
 
     public String getName() {
         return name;
@@ -32,13 +34,32 @@ public class User {
         return loginId;
     }
 
-    public String getLoginPassword(){return loginPassword;}
+    public String getLoginPassword() {
+        return loginPassword;
+    }
 
-    public int getGroup_id() {
+    public int getPrivateId() {
+        return privateId;
+    }
+
+    public void setPrivateId(int privateId) {
+        this.privateId = privateId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
+    public void setLoginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
+    }
+
+    public int getGroupId() {
         return groupId;
     }
 
-    public void setGroup_id(int group_id) {
-        this.groupId = group_id;
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
     }
+
 }

@@ -67,7 +67,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="540.0">
                      <children>
-                        <TableView fx:id="tblFacility" prefHeight="297.0" prefWidth="560.0">
+                        <TableView fx:id="tblFacility" prefHeight="297.0" prefWidth="560.0" styleClass="ibmM">
                           <columns>
                             <TableColumn fx:id="groupCol" prefWidth="90" text="그룹" />
                             <TableColumn fx:id="nameCol" prefWidth="140" text="시설명" />

@@ -2,12 +2,11 @@ package com.example.metabus.persistence.dao;
 
 import com.example.metabus.persistence.domain.Facility;
 import com.example.metabus.persistence.domain.FacilityGroup;
-import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class FindFacilityFromLocationImpl implements FindFacilityFromLocation {
+public class FacilityDaoImpl implements FacilityDao {
 
     MybatisUtil mybatisUtil;
     List<Facility> facilities;
@@ -15,9 +14,9 @@ public class FindFacilityFromLocationImpl implements FindFacilityFromLocation {
 
     @Override
     public List<Facility> getNameContainsFacility(String facilityName) {
-        SqlSession session = mybatisUtil.getInstance().openSession();
+        SqlSession session = mybatisUtil.getInstance().getSqlSessionFactory().openSession();
         try{
-            facilities = session.getMapper(FindFacilityFromLocation.class).getNameContainsFacility(facilityName);
+            facilities = session.getMapper(FacilityDao.class).getNameContainsFacility(facilityName);
             session.commit();
         }
         finally {
@@ -32,9 +31,9 @@ public class FindFacilityFromLocationImpl implements FindFacilityFromLocation {
 
     @Override
     public List<FacilityGroup> getFacilityGroups(String facilityName) {
-        SqlSession session = mybatisUtil.getInstance().openSession();
+        SqlSession session = mybatisUtil.getInstance().getSqlSessionFactory().openSession();
         try {
-            facilityGroupList = session.getMapper(FindFacilityFromLocation.class).getFacilityGroups(facilityName);
+            facilityGroupList = session.getMapper(FacilityDao.class).getFacilityGroups(facilityName);
             session.commit();
         } finally {
             session.close();

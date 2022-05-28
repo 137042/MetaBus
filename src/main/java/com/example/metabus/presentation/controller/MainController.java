@@ -94,7 +94,6 @@ public class MainController implements Initializable {
 
     public void refreshBus(){
 
-
 //        ObservableList<ArrivalTableData> arrivalList  = jsonparse.getList();
         ObservableList<ArrivalTableData> arrivalList = FXCollections.observableArrayList(
                 new ArrivalTableData(
@@ -116,14 +115,14 @@ public class MainController implements Initializable {
         Popup.searchFacDisplay();
         lblStart.setText(SearchFacController.facInfo);
         SearchFacController.facInfo = "";
-        fillStartTbl();
+        fillTblStart();
     }
 
     public void searchEndFac() throws IOException {
         Popup.searchFacDisplay();
         lblEnd.setText(SearchFacController.facInfo);
         SearchFacController.facInfo = "";
-        fillEndTbl();
+        fillTblEnd();
     }
 
     public void checkRoute(){
@@ -151,7 +150,7 @@ public class MainController implements Initializable {
         //query get list 파싱 필요? dao로 바로 받으면 메소드 합치기
     }
 
-    private void fillStartTbl(){
+    private void fillTblStart(){
         ObservableList<StationTableData> startList = FXCollections.observableArrayList(
                 new StationTableData(
                         new SimpleIntegerProperty(10167),
@@ -181,7 +180,7 @@ public class MainController implements Initializable {
         tblStart.setItems(startList);
     }
 
-    private void fillEndTbl(){
+    private void fillTblEnd(){
         ObservableList<StationTableData> endList = FXCollections.observableArrayList(
                 new StationTableData(
                         new SimpleIntegerProperty(90167),

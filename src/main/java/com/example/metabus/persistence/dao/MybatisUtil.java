@@ -9,13 +9,13 @@ import java.io.InputStream;
 
 public class MybatisUtil {
 
-    private static MybatisUtil mybatisUtil=null;
+    private static MybatisUtil mybatisUtil;
     private SqlSessionFactory sqlSessionFactory = null;
     private InputStream is = null;
 
     private MybatisUtil() {
         try {
-            is = Resources.getResourceAsStream("main/resources/config.xml");
+            is = Resources.getResourceAsStream("config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,12 +31,15 @@ public class MybatisUtil {
         }
     }
 
-        public SqlSessionFactory getInstance () {
-            if(sqlSessionFactory==null)
-            {
-                mybatisUtil=new MybatisUtil();
-                    return sqlSessionFactory;
-            }
-            return sqlSessionFactory;
+    public static synchronized MybatisUtil getInstance () {
+        if(mybatisUtil==null)
+        {
+            mybatisUtil=new MybatisUtil();
+        }
+        return mybatisUtil;
+    }
+
+    public SqlSessionFactory getSqlSessionFactory() {
+        return sqlSessionFactory;
     }
 }

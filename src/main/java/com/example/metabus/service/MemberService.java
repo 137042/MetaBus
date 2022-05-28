@@ -10,11 +10,12 @@ import java.util.List;
 
 public class MemberService {
 
-   private UserDao userDao;
+    private UserDao userDao;
 
     public MemberService() {
         userDao= new UserDaoImpl();
     }
+
 
     public Boolean UserValidation(String id, String pw){
         User user;
@@ -23,25 +24,35 @@ public class MemberService {
         {
             return true;
         }
+        return false;
+    }
+
+    public Boolean checkIdIsDuplicated(String id){
+        User user;
+        user = userDao.checkIdIsDuplicated(id);
+        if(user.getLoginId().equals(id))
+        {
             return false;
+        }
+        return true;
     }
 
     public String findPassWord(String id){
         User user;
         user = userDao.findPassword(id);
-        if(user.getLoginId().equals(id))
+        if(user.getLoginPassword()==null)
         {
-            return user.getLoginPassword();
+            return "there is no matched input id";
         }
-        return null;
+        return user.getLoginPassword();
     }
 
     public boolean signUp(String name, String id, String pw)
     {
         boolean flag;
         User user=new User(name,id,pw);
-         flag = userDao.insertUser(user);
-         return flag;
+        flag = userDao.insertUser(user);
+        return flag;
     }
 
     public List<Integer> getUserRouteHistory(String id){

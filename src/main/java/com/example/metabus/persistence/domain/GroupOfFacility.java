@@ -1,6 +1,5 @@
 package com.example.metabus.persistence.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 

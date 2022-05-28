@@ -12,7 +12,8 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        URL location = new File("src/main/resources/com/example/metabus/scene/login.fxml").toURI().toURL();
+        final String LOGIN_PATH = "src/main/resources/com/example/metabus/scene/login.fxml";
+        URL location = new File("src/main/resources/com/example/metabus/scene/main.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Scene scene = new Scene(fxmlLoader.load(location), 1000, 600);
         stage.setTitle("MetaBus");

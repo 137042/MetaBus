@@ -9,6 +9,7 @@ import java.sql.Time;
 @AllArgsConstructor
 public class BusNumber {
 
+    private int privateId;
     private int busNumber;
     private String busType;
     private Time startTime;
@@ -16,6 +17,14 @@ public class BusNumber {
     private String startStation;
     private String endStation;
     private int routeId;
+
+    public int getPrivateId() {
+        return privateId;
+    }
+
+    public void setPrivateId(int privateId) {
+        this.privateId = privateId;
+    }
 
     public int getBusNumber() {
         return busNumber;

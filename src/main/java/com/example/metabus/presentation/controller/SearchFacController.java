@@ -1,6 +1,5 @@
 package com.example.metabus.presentation.controller;
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +15,7 @@ public class SearchFacController {
     @FXML
     private TextField txtFac;
     @FXML
-    private Button btnSearch, btnSend;
+    private Button btnSend;
     @FXML
     private TableView<FacilityTableData> tblFacility;
     @FXML

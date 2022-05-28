@@ -8,11 +8,11 @@
 
 <StackPane prefHeight="400.0" prefWidth="600.0" styleClass="bg" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.metabus.presentation.controller.MyPageController">
    <children>
-      <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="600.0">
                <children>
-                  <Label styleClass="netmarbleB" text="반가워요, ">
+                  <Label prefWidth="500.0" styleClass="netmarbleB" text="오늘은 어떤 곳을 방문하시나요?">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -23,14 +23,6 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="lblName" prefWidth="360.0" styleClass="netmarbleB">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
                   <Button fx:id="btnSend" mnemonicParsing="false" onAction="#sendData" prefHeight="40.0" prefWidth="40.0" styleClass="btn">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -40,48 +32,49 @@
                         </ImageView>
                      </graphic>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="35.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <Accordion prefHeight="330.0" prefWidth="600.0" stylesheets="@../stylesheet.css">
-              <panes>
-                <TitledPane animated="false" stylesheets="@../stylesheet.css" text="최근 이용한 시설">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="600.0">
-                           <children>
-                              <TableView fx:id="tblFUF" layoutX="6.0" prefHeight="270.0" prefWidth="580.0">
-                                <columns>
-                                  <TableColumn fx:id="fufGcol" minWidth="0.0" prefWidth="95.0" text="그룹" />
-                                  <TableColumn fx:id="fufNcol" prefWidth="95.0" text="시설명" />
-                                  <TableColumn fx:id="fufAcol" prefWidth="384.99998474121094" text="주소" />
-                                </columns>
-                              </TableView>
-                           </children></AnchorPane>
-                  </content>
+            <HBox alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/building.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label styleClass="netmarbleM" text="최근 방문한 시설">
                      <font>
-                        <Font name="Malgun Gothic" size="12.0" />
+                        <Font size="16.0" />
                      </font>
-                </TitledPane>
-                  <TitledPane animated="false" layoutX="10.0" layoutY="32.0" prefHeight="276.0" prefWidth="600.0" stylesheets="@../stylesheet.css" text="최근 이용한 경로">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="200.0">
-                           <children>
-                              <TableView fx:id="tblFUR" layoutX="6.0" prefHeight="270.0" prefWidth="580.0">
-                                <columns>
-                                  <TableColumn fx:id="furScol" maxWidth="292.33333349227905" prefWidth="292.33333349227905" text="출발 정류장" />
-                                  <TableColumn fx:id="furEcol" maxWidth="291.3333435058594" prefWidth="282.3334045410156" text="도착 정류장" />
-                                </columns>
-                              </TableView>
-                           </children></AnchorPane>
-                     </content>
-                     <font>
-                        <Font name="Malgun Gothic" size="12.0" />
-                     </font>
-                  </TitledPane>
-              </panes>
-            </Accordion>
+                  </Label>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/building.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="tblFacility" prefHeight="286.0" prefWidth="598.0" styleClass="ibmM">
+              <columns>
+                <TableColumn fx:id="groupCol" prefWidth="97.0" text="그룹" />
+                <TableColumn fx:id="nameCol" prefWidth="97.0" text="시설명" />
+                <TableColumn fx:id="addressCol" prefWidth="400.0" text="주소" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
    </children>
