@@ -21,7 +21,7 @@ public class SearchFacController {
     @FXML
     private TableColumn<FacilityTableData, String> groupCol, nameCol, addressCol;
 
-    private boolean isSelected = false;
+    public static boolean isSelected = false;
     public static String facInfo = "";
 
     public void searchFacility(){
@@ -32,10 +32,8 @@ public class SearchFacController {
 
     public void sendData(){
         setFacInfo();
-        if(isSelected) {
-            Stage stage = (Stage) btnSend.getScene().getWindow();
-            stage.close();
-        }
+        Stage stage = (Stage) btnSend.getScene().getWindow();
+        stage.close();
     }
 
     private void setTableData(String input){
@@ -64,12 +62,17 @@ public class SearchFacController {
     }
 
     private void setFacInfo(){
-        if(tblFacility.getSelectionModel().getSelectedItem().getGroup() != null){
-            isSelected = true;
-            String name = tblFacility.getSelectionModel().getSelectedItem().getName().get();
-            String address = tblFacility.getSelectionModel().getSelectedItem().getAddress().get();
-            facInfo = name + "(" + address + ")";
+        try{
+            if(tblFacility.getSelectionModel().getSelectedItem().getGroup() != null){
+                isSelected = true;
+                String name = tblFacility.getSelectionModel().getSelectedItem().getName().get();
+                String address = tblFacility.getSelectionModel().getSelectedItem().getAddress().get();
+                facInfo = name + "(" + address + ")";
+            }
+        } catch(Exception e){
+            e.printStackTrace();
         }
+
     }
 
 }

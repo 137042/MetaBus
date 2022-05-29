@@ -5,9 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -18,13 +16,28 @@ public class MyPageController implements Initializable {
     @FXML
     private Button btnSend;
     @FXML
+    private RadioButton rdoStart, rdoEnd;
+    @FXML
     private TableView<FacilityTableData> tblFacility;
     @FXML
     private TableColumn<FacilityTableData, String> groupCol, nameCol, addressCol;
 
+    private ToggleGroup toggleGroup;
+    public static String facInfo = "";
+    public static int facInfoFor = 0;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        toggleGroup = new ToggleGroup();
+        rdoStart.setToggleGroup(toggleGroup);
+        rdoEnd.setToggleGroup(toggleGroup);
         setTblFacility();
+    }
+
+    public void sendData(){
+        setFacInfo();
+        Stage stage = (Stage) btnSend.getScene().getWindow();
+        stage.close();
     }
 
     private void setTblFacility(){
@@ -37,10 +50,25 @@ public class MyPageController implements Initializable {
         tblFacility.setItems(fufList);
     }
 
-    public void sendData(){
+    private void setFacInfo(){
+        try{
+            if(tblFacility.getSelectionModel().getSelectedItem().getGroup() != null){
+                Toggle toggle = toggleGroup.getSelectedToggle();
 
-        Stage stage = (Stage) btnSend.getScene().getWindow();
-        stage.close();
+                String name = tblFacility.getSelectionModel().getSelectedItem().getName().get();
+                String address = tblFacility.getSelectionModel().getSelectedItem().getAddress().get();
+                facInfo = name + "(" + address + ")";
+
+                if(toggle == rdoStart){
+                    facInfoFor = 1;
+                }
+                else{
+                    facInfoFor = 2;
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

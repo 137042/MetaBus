@@ -24,6 +24,5 @@ public interface BusDao {
             " INNER JOIN bus_station as bs2 on l.bus_route_id = #{arrStation} INNER JOIN bus_number as bn2 on l.bus_route_id = bn2.private_id;")
     public List<BusNumber> getLayOverBus(@Param("depStation") int depStation, @Param("arrStation")int arrStation);
 
-
 }
 

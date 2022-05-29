@@ -10,7 +10,7 @@ import java.sql.Time;
 public class BusNumber {
 
     private int privateId;
-    private int busNumber;
+    private String busNumber;
     private String busType;
     private Time startTime;
     private Time endTime;
@@ -26,11 +26,11 @@ public class BusNumber {
         this.privateId = privateId;
     }
 
-    public int getBusNumber() {
+    public String getBusNumber() {
         return busNumber;
     }
 
-    public void setBusNumber(int busNumber) {
+    public void setBusNumber(String busNumber) {
         this.busNumber = busNumber;
     }
 

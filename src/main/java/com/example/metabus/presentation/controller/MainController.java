@@ -1,6 +1,10 @@
 package com.example.metabus.presentation.controller;
 
+import com.example.metabus.persistence.domain.BusNumber;
+import com.example.metabus.persistence.domain.BusStation;
 import com.example.metabus.presentation.view.Popup;
+import com.example.metabus.service.BusService;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,6 +19,7 @@ import javafx.scene.control.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -62,16 +67,15 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<StationTableData, String> startNameCol, endNameCol;
     @FXML
-    private TableColumn startCheckCol, endCheckCol;
+    private TableColumn<StationTableData, String> startCheckCol, endCheckCol;
 
     @FXML
     private Button btnOut;
     @FXML
     public Label lblStart, lblEnd;
-
-    private final String PATH_LOGIN = "src/main/resources/com/example/metabus/scene/login.fxml";
-    private final String START_FAC_NOTICE = "출발 시설이 이곳에 노출됩니다";
-    private final String END_FAC_NOTICE = "도착 시설이 이곳에 노출됩니다";
+    
+    private BusService busService;
+    private ObservableList<ArrivalTableData> routeList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -79,13 +83,27 @@ public class MainController implements Initializable {
 //        mapViewer.setMaxSize(550.0, 550.0);
 //        mapViewer.setPadding(new Insets(10, 10, 10, 100));
 //        layoutGrid.add(mapViewer, 0, 1);
+        routeList = FXCollections.observableArrayList();
+        busService = new BusService();
     }
 
     public void openMyPage() throws IOException {
         Popup.myPageDisplay();
+        if(MyPageController.facInfoFor == 1){
+            lblStart.setText(MyPageController.facInfo);
+            MyPageController.facInfo = "";
+            fillTblStart();
+        }
+        else if(MyPageController.facInfoFor == 2){
+            lblEnd.setText(MyPageController.facInfo);
+            MyPageController.facInfo = "";
+            fillTblEnd();
+        }
     }
 
     public void clearBusStop(){
+        final String START_FAC_NOTICE = "출발 시설이 이곳에 노출됩니다";
+        final String END_FAC_NOTICE = "도착 시설이 이곳에 노출됩니다";
         tblStart.setItems(null);
         tblEnd.setItems(null);
         lblStart.setText(START_FAC_NOTICE);
@@ -93,44 +111,41 @@ public class MainController implements Initializable {
     }
 
     public void refreshBus(){
-
-//        ObservableList<ArrivalTableData> arrivalList  = jsonparse.getList();
-        ObservableList<ArrivalTableData> arrivalList = FXCollections.observableArrayList(
-                new ArrivalTableData(
-                        new SimpleIntegerProperty(10167),
-                        new SimpleIntegerProperty(10080),
-                        new SimpleStringProperty("191-3"),
-                        new SimpleIntegerProperty(30)
-                )
-        );
-
+        setLeftTime();
         startCol.setCellValueFactory(cellData -> cellData.getValue().getStartStation().asObject());
         endCol.setCellValueFactory(cellData -> cellData.getValue().getEndStation().asObject());
         busCol.setCellValueFactory(cellData -> cellData.getValue().getBus());
         leftCol.setCellValueFactory(cellData -> cellData.getValue().getLeftTime().asObject());
-        tblArrival.setItems(arrivalList);
+        tblArrival.setItems(routeList);
     }
 
     public void searchStartFac() throws IOException {
         Popup.searchFacDisplay();
-        lblStart.setText(SearchFacController.facInfo);
-        SearchFacController.facInfo = "";
-        fillTblStart();
+        if(SearchFacController.isSelected){
+            lblStart.setText(SearchFacController.facInfo);
+            fillTblStart();
+            SearchFacController.facInfo = "";
+            SearchFacController.isSelected = false;
+        }
     }
 
     public void searchEndFac() throws IOException {
         Popup.searchFacDisplay();
-        lblEnd.setText(SearchFacController.facInfo);
-        SearchFacController.facInfo = "";
-        fillTblEnd();
+        if(SearchFacController.isSelected){
+            lblEnd.setText(SearchFacController.facInfo);
+            fillTblEnd();
+            SearchFacController.facInfo = "";
+            SearchFacController.isSelected = false;
+        }
     }
 
-    public void checkRoute(){
-        // start table과 end table의 체크된 객체를 받아서 연결하는 쿼리 전송해서 refresh로 날리기
+    public void searchRoute(){
+        makeRouteList();
         refreshBus();
     }
 
     public void logOut() {
+        final String PATH_LOGIN = "src/main/resources/com/example/metabus/scene/login.fxml";
         Stage stage = (Stage) btnOut.getScene().getWindow();
         try {
             URL location = new File(PATH_LOGIN).toURI().toURL();
@@ -146,33 +161,17 @@ public class MainController implements Initializable {
         }
     }
 
-    private void getStopsNearByFac(){
-        //query get list 파싱 필요? dao로 바로 받으면 메소드 합치기
-    }
-
     private void fillTblStart(){
-        ObservableList<StationTableData> startList = FXCollections.observableArrayList(
-                new StationTableData(
-                        new SimpleIntegerProperty(10167),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(10168),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(10169),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(10163),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(10162),
-                        new SimpleStringProperty("신나리")
-                )
-        );
+        List<BusStation> tmpList = busService.getAroundBusStation(lblStart.getText());
+        ObservableList<StationTableData> startList = FXCollections.observableArrayList();
+        for (BusStation busStation : tmpList) {
+            startList.addAll(
+                    new StationTableData(
+                            new SimpleIntegerProperty(busStation.getServiceId()),
+                            new SimpleStringProperty(busStation.getName())
+                    )
+            );
+        }
 
         startCheckCol.setCellValueFactory(new PropertyValueFactory<StationTableData, String>("checkBox"));
         startIdCol.setCellValueFactory(cellData -> cellData.getValue().getStationId().asObject());
@@ -181,24 +180,16 @@ public class MainController implements Initializable {
     }
 
     private void fillTblEnd(){
-        ObservableList<StationTableData> endList = FXCollections.observableArrayList(
+        List<BusStation> tmpList = busService.getAroundBusStation(lblEnd.getText());
+        ObservableList<StationTableData> endList = FXCollections.observableArrayList();
+        for (BusStation busStation : tmpList) {
+            endList.addAll(
                 new StationTableData(
-                        new SimpleIntegerProperty(90167),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(90367),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(90467),
-                        new SimpleStringProperty("신나리")
-                ),
-                new StationTableData(
-                        new SimpleIntegerProperty(90267),
-                        new SimpleStringProperty("신나리")
+                    new SimpleIntegerProperty(busStation.getServiceId()),
+                    new SimpleStringProperty(busStation.getName())
                 )
-        );
+            );
+        }
 
         endCheckCol.setCellValueFactory(new PropertyValueFactory<StationTableData, String>("checkBox"));
         endIdCol.setCellValueFactory(cellData -> cellData.getValue().getStationId().asObject());
@@ -206,27 +197,53 @@ public class MainController implements Initializable {
         tblEnd.setItems(endList);
     }
 
-    private void makeStopList(){
-        ObservableList<StationTableData> startTblCols = tblStart.getItems();
-        ObservableList<StationTableData> endTblCols = tblEnd.getItems();
-
-        List<Integer> startList = null, endList = null;
-
-        for (StationTableData tmpData : startTblCols) {
-            if (tmpData.getCheckBox().isSelected()) {
-                System.out.println(tmpData.getStationId());
-                startList.add(tmpData.getStationId().getValue());
-            }
+    private List<Integer> makeStopList(boolean isForStart){
+        ObservableList<StationTableData> tblCols;
+        List<Integer> stopList = new ArrayList<>();
+        if(isForStart){
+            tblCols = tblStart.getItems();
+        }
+        else{
+            tblCols = tblEnd.getItems();
         }
 
-        for(StationTableData tmpData : endTblCols){
+        for (StationTableData tmpData : tblCols) {
             if (tmpData.getCheckBox().isSelected()) {
-                System.out.println(tmpData.getStationId().getValue());
-                endList.add(tmpData.getStationId().getValue());
+                stopList.add(tmpData.getStationId().getValue());
             }
         }
+        return stopList;
+    }
 
-        System.out.println();
+    private void makeRouteList(){
+        List<Integer> startList = makeStopList(true);
+        List<Integer> endList = makeStopList(false);
+        List<BusNumber> tmpList;
+
+        for(int i = 0; i < startList.size(); i++){
+            for(int j = 0; j < startList.size(); j++) {
+                tmpList = busService.getLayOverBus(startList.get(i), endList.get(j));
+                for (BusNumber busNumber : tmpList) {
+                    routeList.addAll(
+                        new ArrivalTableData(
+                            new SimpleIntegerProperty(startList.get(i)),
+                            new SimpleIntegerProperty(endList.get(j)),
+                            new SimpleStringProperty(busNumber.getBusNumber()),
+                            new SimpleIntegerProperty(0)
+                        )
+                    );
+                }
+            }
+        }
+        setLeftTime();
+    }
+
+    private void setLeftTime(){
+        for (ArrivalTableData arrivalTableData : routeList) {
+            // bus api 요청해서 밑에 넣어주기 routeList.get(i).getBus()
+            int lt = 0;
+            arrivalTableData.setLeftTime(new SimpleIntegerProperty(lt));
+        }
     }
 
 }

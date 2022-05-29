@@ -131,7 +131,7 @@
                      </children></AnchorPane>
               </content>
             </ScrollPane>
-            <Button fx:id="btnRouteCheck" mnemonicParsing="false" onAction="#checkRoute" prefHeight="40.0" prefWidth="430.0" styleClass="btn-txt-small" text="선택한 정류장을 지나는 버스를 확인하기">
+            <Button fx:id="btnRouteCheck" mnemonicParsing="false" onAction="#searchRoute" prefHeight="40.0" prefWidth="430.0" styleClass="btn-txt-small" text="선택한 정류장을 지나는 버스를 확인하기">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
