@@ -12,9 +12,9 @@ import java.net.URL;
 public class Popup {
 
     public static void regDisplay() throws IOException {
-        URL location = new File("src/main/resources/com/example/metabus/scene/register.fxml").toURI().toURL();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Scene scene = new Scene(fxmlLoader.load(location), 300, 300);
+        final String PATH_REGISTER = "src/main/resources/com/example/metabus/scene/register.fxml";
+        URL location = new File(PATH_REGISTER).toURI().toURL();
+        Scene scene = new Scene(FXMLLoader.load(location), 300, 300);
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - Register");
@@ -26,9 +26,9 @@ public class Popup {
     }
 
     public static void findPwDisplay() throws IOException {
-        URL location = new File("src/main/resources/com/example/metabus/scene/findPw.fxml").toURI().toURL();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Scene scene = new Scene(fxmlLoader.load(location), 300, 300);
+        final String PATH_FIND_PW = "src/main/resources/com/example/metabus/scene/findPw.fxml";
+        URL location = new File(PATH_FIND_PW).toURI().toURL();
+        Scene scene = new Scene(FXMLLoader.load(location), 300, 300);
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - Find Password");
@@ -40,9 +40,9 @@ public class Popup {
     }
 
     public static void myPageDisplay() throws IOException {
-        URL location = new File("src/main/resources/com/example/metabus/scene/myPage.fxml").toURI().toURL();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Scene scene = new Scene(fxmlLoader.load(location), 600, 400);
+        final String PATH_MY_PAGE = "src/main/resources/com/example/metabus/scene/myPage.fxml";
+        URL location = new File(PATH_MY_PAGE).toURI().toURL();
+        Scene scene = new Scene(FXMLLoader.load(location), 600, 400);
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - MyPage");
@@ -54,9 +54,9 @@ public class Popup {
     }
 
     public static void searchFacDisplay() throws IOException {
-        URL location = new File("src/main/resources/com/example/metabus/scene/searchFac.fxml").toURI().toURL();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Scene scene = new Scene(fxmlLoader.load(location), 600, 400);
+        final String PATH_SEARCH_FAC = "src/main/resources/com/example/metabus/scene/searchFac.fxml";
+        URL location = new File(PATH_SEARCH_FAC).toURI().toURL();
+        Scene scene = new Scene(FXMLLoader.load(location), 600, 400);
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("MetaBus - Search Facility");

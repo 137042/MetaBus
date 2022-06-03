@@ -73,7 +73,7 @@ public class MainController implements Initializable {
     private Button btnOut;
     @FXML
     public Label lblStart, lblEnd;
-    
+
     private BusService busService;
     private ObservableList<ArrivalTableData> routeList;
 
@@ -173,7 +173,7 @@ public class MainController implements Initializable {
             );
         }
 
-        startCheckCol.setCellValueFactory(new PropertyValueFactory<StationTableData, String>("checkBox"));
+        startCheckCol.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
         startIdCol.setCellValueFactory(cellData -> cellData.getValue().getStationId().asObject());
         startNameCol.setCellValueFactory(cellData -> cellData.getValue().getStationName());
         tblStart.setItems(startList);
@@ -191,7 +191,7 @@ public class MainController implements Initializable {
             );
         }
 
-        endCheckCol.setCellValueFactory(new PropertyValueFactory<StationTableData, String>("checkBox"));
+        endCheckCol.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
         endIdCol.setCellValueFactory(cellData -> cellData.getValue().getStationId().asObject());
         endNameCol.setCellValueFactory(cellData -> cellData.getValue().getStationName());
         tblEnd.setItems(endList);

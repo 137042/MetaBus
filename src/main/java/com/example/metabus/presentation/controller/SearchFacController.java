@@ -1,5 +1,9 @@
 package com.example.metabus.presentation.controller;
 
+import com.example.metabus.persistence.domain.Facility;
+import com.example.metabus.persistence.domain.FacilityGroup;
+import com.example.metabus.service.FacilityService;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class SearchFacController {
 
@@ -25,9 +31,13 @@ public class SearchFacController {
     public static String facInfo = "";
 
     public void searchFacility(){
+        FacilityService facilityService = new FacilityService();
         String input = txtFac.getText().trim();
-        // query -> get facility list
-        setTableData(input);
+        List<Facility> tmpList = facilityService.getFacility(input);
+        if(tmpList.size() == 0){
+            // 해당 키워드를 group 으로 간주해서 group 해당하는 모든? 특정 개수의 시설 조회로 변경
+        }
+        setTableData(tmpList);
     }
 
     public void sendData(){
@@ -36,24 +46,17 @@ public class SearchFacController {
         stage.close();
     }
 
-    private void setTableData(String input){
-        ObservableList<FacilityTableData> facilityList = FXCollections.observableArrayList(
-                new FacilityTableData(
-                        new SimpleStringProperty("그룹"),
-                        new SimpleStringProperty("시설명"),
-                        new SimpleStringProperty("주소")
-                ),
-                new FacilityTableData(
-                        new SimpleStringProperty("asdff"),
-                        new SimpleStringProperty("asfa"),
-                        new SimpleStringProperty("asf")
-                ),
-                new FacilityTableData(
-                        new SimpleStringProperty("py8uol"),
-                        new SimpleStringProperty("iop"),
-                        new SimpleStringProperty("ipoiop")
-                )
-        );
+    private void setTableData(List<Facility> tmpList){
+        ObservableList<FacilityTableData> facilityList = FXCollections.observableArrayList();
+        for(int i = 0; i < tmpList.size(); i++){
+            facilityList.addAll(
+//                new FacilityTableData(
+//                    new SimpleStringProperty(tmpList.get(i).getGroup()),
+//                    new SimpleStringProperty(tmpList.get(i).getName()),
+//                    new SimpleStringProperty(tmpList.get(i).getAddress())
+//                ) // facility 도메인에 group 포함되지 않아 코드 실행 불가
+            );
+        }
 
         groupCol.setCellValueFactory(cellData -> cellData.getValue().getGroup());
         nameCol.setCellValueFactory(cellData -> cellData.getValue().getName());

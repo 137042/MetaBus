@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DomainMapping">
+
+<resultMap id="UserResultMapping" type="com.example.metabus.persistence.domain.User" >
+
+    <result property="privateId" column="private_id"/>
+    <result property="loginId" column="login_id"/>
+    <result property="loginPassword" column="login_pw"/>
+    <result property="groupId" column="group_id"/>
+
+</resultMap>
+
+    <resultMap id="BusStationMapping" type="com.example.metabus.persistence.domain.BusStation">
+        <result property="apiId" column="api_id"/>
+        <result property="serviceId" column="service_id"/>
+        <result property="name" column="name"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+    </resultMap>
+
+    <resultMap id="FacilityMapping" type="com.example.metabus.persistence.domain.Facility">
+       <result property="privateId" column="private_id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+    </resultMap>
+
+</mapper>
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<!DOCTYPE mapper-->
+        <!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+        <!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+
+        <!--<mapper namespace="JoinMapping">-->
+        <!--    <resultMap id="facilityToFacilityGroup" type="Facility">-->
+        <!--        <id property="id" column="private_id"/>-->
+        <!--        <result property="name" column="name"/>-->
+        <!--        <result property="address" column="latitude"/>-->
+        <!--        <result property="latitude" column="latitude"/>-->
+        <!--        <result property="longitude" column="longitude"/>-->
+        <!--        <collection property="facilityGroups" ofType="FacilityGroup">-->
+        <!--            <id property="id" column="private_id"></id>-->
+        <!--            <result property="parentId" column="parent_id"></result>-->
+        <!--            <result property="categoryName" column="category_name"></result>-->
+        <!--        </collection>-->
+        <!--    </resultMap>-->
+
+        <!--    <resultMap id="BusStationToBusNumber" type="BusStation">-->
+        <!--        <id property="privateId" column="bus_route_id"/>-->
+        <!--        <result property="apiID" column="api_id"/>-->
+        <!--        <result property="serviceId" column="service_id"/>-->
+        <!--        <result property="name" column="name"/>-->
+        <!--        <result property="latitude" column="latitude"/>-->
+        <!--        <result property="longitude" column="longitude"/>-->
+        <!--        <collection property="B" ofType="BusNumber">-->
+        <!--            <id property="id" column="private_id"></id>-->
+        <!--            <result property="parentId" column="parent_id"></result>-->
+        <!--            <result property="categoryName" column="category_name"></result>-->
+        <!--        </collection>-->
+        <!--    </resultMap>-->
+
+
+        <!--</mapper>-->

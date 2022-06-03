@@ -1,5 +1,7 @@
 package com.example.metabus.presentation.controller;
 
+import com.example.metabus.service.FacilityService;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,9 +24,10 @@ public class MyPageController implements Initializable {
     @FXML
     private TableColumn<FacilityTableData, String> groupCol, nameCol, addressCol;
 
-    private ToggleGroup toggleGroup;
     public static String facInfo = "";
     public static int facInfoFor = 0;
+
+    private ToggleGroup toggleGroup;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,6 +44,8 @@ public class MyPageController implements Initializable {
     }
 
     private void setTblFacility(){
+        FacilityService facilityService = new FacilityService();
+        // 사용자 시설 기록 조회 기능 없어서 불가
         ObservableList<FacilityTableData> fufList = FXCollections.observableArrayList(
                 new FacilityTableData(new SimpleStringProperty("그룹"), new SimpleStringProperty("시설명"), new SimpleStringProperty("주소"))
         );

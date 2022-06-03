@@ -12,10 +12,10 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        final String LOGIN_PATH = "src/main/resources/com/example/metabus/scene/login.fxml";
-        URL location = new File("src/main/resources/com/example/metabus/scene/main.fxml").toURI().toURL();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Scene scene = new Scene(fxmlLoader.load(location), 1000, 600);
+        final String PATH_LOGIN = "src/main/resources/com/example/metabus/scene/login.fxml";
+        final String PATH_MAIN_PAGE = "src/main/resources/com/example/metabus/scene/main.fxml";
+        URL location = new File(PATH_LOGIN).toURI().toURL();
+        Scene scene = new Scene(FXMLLoader.load(location), 1000, 600);
         stage.setTitle("MetaBus");
         stage.setResizable(false);
         stage.setMaximized(false);
