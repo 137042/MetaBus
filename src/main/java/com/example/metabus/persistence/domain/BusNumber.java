@@ -1,12 +1,7 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.sql.Time;
 
-@NoArgsConstructor
-@AllArgsConstructor
 public class BusNumber {
 
     private int privateId;
@@ -17,6 +12,21 @@ public class BusNumber {
     private String startStation;
     private String endStation;
     private int routeId;
+
+    public BusNumber(){
+
+    }
+
+    public BusNumber(int privateId, String busNumber, String busType, Time startTime, Time endTime, String startStation, String endStation, int routeId) {
+        this.privateId = privateId;
+        this.busNumber = busNumber;
+        this.busType = busType;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.startStation = startStation;
+        this.endStation = endStation;
+        this.routeId = routeId;
+    }
 
     public int getPrivateId() {
         return privateId;

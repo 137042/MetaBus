@@ -5,12 +5,9 @@ import com.example.metabus.persistence.dao.BusDaoImpl;
 import com.example.metabus.persistence.domain.BusNumber;
 import com.example.metabus.persistence.domain.BusStation;
 import com.example.metabus.persistence.domain.Facility;
-import com.example.metabus.service.FacilityService;
-import com.example.metabus.persistence.dao.FacilityDao;
-import com.example.metabus.persistence.dao.FacilityDaoImpl;
+import org.apache.ibatis.annotations.Param;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BusService {
     BusDao busDao = null;
@@ -25,21 +22,44 @@ public class BusService {
         return busStations;
     }
 
-    public List<BusNumber> getLayOverBus(int departStationNumb, int arrivalStationNumb){
-        List<BusNumber> busNumbers = new ArrayList<>();
-        busNumbers = busDao.getLayOverBus(departStationNumb, arrivalStationNumb);
-        return busNumbers;
+    public List<BusNumber> getLayOverBusFromDepartureToArrival(String departStation, String arrivalStation) {
+        List<BusNumber> LayOverBus = new ArrayList<>();
+        LayOverBus = busDao.getLayOverBus(departStation, arrivalStation);
+        for(int i = 0; i <= LayOverBus.size(); i++){
+            System.out.println(LayOverBus.get(i).getBusNumber());
+        }
+        return LayOverBus;
+
+    }
+        public List<BusNumber> getDirectBusFromDepartureToArrival(int service_id1, int service_id2){
+        List<BusNumber> directBus = new ArrayList<>();
+        directBus = busDao.getDirectBus(service_id1, service_id2);
+        System.out.println("sssss");
+        
+        for(BusNumber bus : directBus){
+            System.out.println(bus.getBusNumber());
+        }
+
+        return directBus;
     }
 
+
+
     public List<BusStation> getAroundBusStation(String name){
+        System.out.print(name.split("\\(")[0]);
         FacilityService facilityService = new FacilityService();
-        Facility facility = facilityService.getFacility(name).get(0);
+
+        Facility facility = facilityService.getFacilities(name.split("\\(")[0]).get(0);
         double lat = facility.getLatitude(), lng = facility.getLongitude();
         List<BusStation> busStations = new ArrayList<>();
         busStations = busDao.getAroundBusStationByLatitudeAndLongitude(lat, lng);
         return busStations;
     }
 
-}
+
+    }
+
+
+
 
 

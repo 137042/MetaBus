@@ -40,6 +40,7 @@ public class RegController {
             }
             else{
                 lblErrId.setText(ERROR_DUPLICATE_ID);
+                System.out.println("ddfd" + id);
             }
         }
     }
@@ -56,6 +57,7 @@ public class RegController {
         }
         if(id.equals("")){
             lblErrId.setText(ERROR_EMPTY_ID);
+            System.out.println(id);
             res = false;
         }
         if(pw.equals("")){

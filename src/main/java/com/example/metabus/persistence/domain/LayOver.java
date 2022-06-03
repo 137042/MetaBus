@@ -1,17 +1,20 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
 public class LayOver {
 
     private BusNumber busRouteId;
     private BusStation stationId;
     private int order;
 
+    public LayOver() {
 
+    }
+
+    public LayOver(BusNumber busRouteId, BusStation stationId, int order) {
+        this.busRouteId = busRouteId;
+        this.stationId = stationId;
+        this.order = order;
+    }
 
     public BusNumber getBusRouteId() {
         return busRouteId;

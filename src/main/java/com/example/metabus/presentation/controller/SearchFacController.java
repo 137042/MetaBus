@@ -4,6 +4,8 @@ import com.example.metabus.persistence.domain.Facility;
 import com.example.metabus.persistence.domain.FacilityGroup;
 import com.example.metabus.service.FacilityService;
 
+import com.example.metabus.service.HistoryService;
+import com.example.metabus.service.MemberService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,9 +35,10 @@ public class SearchFacController {
     public void searchFacility(){
         FacilityService facilityService = new FacilityService();
         String input = txtFac.getText().trim();
-        List<Facility> tmpList = facilityService.getFacility(input);
+        List<Facility> tmpList = facilityService.getFacilities(input);
         if(tmpList.size() == 0){
-            // 해당 키워드를 group 으로 간주해서 group 해당하는 모든? 특정 개수의 시설 조회로 변경
+            // 해당 키워드를 group 으로 간주해서 group 해당하는 시설 조회로 변경
+            // 하려고 했으나 table 연관관계가 설계대로 안 나와서 불가능해짐
         }
         setTableData(tmpList);
     }
@@ -47,14 +50,16 @@ public class SearchFacController {
     }
 
     private void setTableData(List<Facility> tmpList){
+        FacilityService facilityService = new FacilityService();
         ObservableList<FacilityTableData> facilityList = FXCollections.observableArrayList();
         for(int i = 0; i < tmpList.size(); i++){
             facilityList.addAll(
-//                new FacilityTableData(
-//                    new SimpleStringProperty(tmpList.get(i).getGroup()),
-//                    new SimpleStringProperty(tmpList.get(i).getName()),
-//                    new SimpleStringProperty(tmpList.get(i).getAddress())
-//                ) // facility 도메인에 group 포함되지 않아 코드 실행 불가
+                new FacilityTableData(
+                    new SimpleStringProperty(
+                            facilityService.getFacilityGroupCategoryName(tmpList.get(i).getName()).get(0).getCategoryName()),
+                    new SimpleStringProperty(tmpList.get(i).getName()),
+                    new SimpleStringProperty(tmpList.get(i).getAddress())
+                )
             );
         }
 
@@ -65,17 +70,25 @@ public class SearchFacController {
     }
 
     private void setFacInfo(){
+
         try{
             if(tblFacility.getSelectionModel().getSelectedItem().getGroup() != null){
                 isSelected = true;
                 String name = tblFacility.getSelectionModel().getSelectedItem().getName().get();
                 String address = tblFacility.getSelectionModel().getSelectedItem().getAddress().get();
                 facInfo = name + "(" + address + ")";
+                insertHistory(name);
             }
         } catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
+
+    private void insertHistory(String name){
+        MemberService memberService = new MemberService();
+        HistoryService historyService = new HistoryService();
+        int userId = memberService.getPI(LoginController.user_id);
+        historyService.insertUserFacilityHistory(userId, name, 0);
+    }
 }

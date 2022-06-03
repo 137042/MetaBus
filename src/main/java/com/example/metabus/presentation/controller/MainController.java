@@ -1,4 +1,10 @@
 package com.example.metabus.presentation.controller;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 import com.example.metabus.persistence.domain.BusNumber;
 import com.example.metabus.persistence.domain.BusStation;
@@ -145,7 +151,7 @@ public class MainController implements Initializable {
     }
 
     public void logOut() {
-        final String PATH_LOGIN = "src/main/resources/com/example/metabus/scene/login.fxml";
+        final String PATH_LOGIN = "src/main/resources/com/example/metabus_client/scene/login.fxml";
         Stage stage = (Stage) btnOut.getScene().getWindow();
         try {
             URL location = new File(PATH_LOGIN).toURI().toURL();
@@ -197,9 +203,9 @@ public class MainController implements Initializable {
         tblEnd.setItems(endList);
     }
 
-    private List<Integer> makeStopList(boolean isForStart){
+    private List<StationTableData> makeStopList(boolean isForStart){
         ObservableList<StationTableData> tblCols;
-        List<Integer> stopList = new ArrayList<>();
+        List<StationTableData> stopList = new ArrayList<>();
         if(isForStart){
             tblCols = tblStart.getItems();
         }
@@ -209,33 +215,42 @@ public class MainController implements Initializable {
 
         for (StationTableData tmpData : tblCols) {
             if (tmpData.getCheckBox().isSelected()) {
-                stopList.add(tmpData.getStationId().getValue());
+                stopList.add(tmpData);
             }
         }
         return stopList;
     }
 
     private void makeRouteList(){
-        List<Integer> startList = makeStopList(true);
-        List<Integer> endList = makeStopList(false);
+        List<StationTableData> startList = makeStopList(true);
+        List<StationTableData> endList = makeStopList(false);
         List<BusNumber> tmpList;
 
+        ObservableList<ArrivalTableData> tmpTbl = FXCollections.observableArrayList();
         for(int i = 0; i < startList.size(); i++){
-            for(int j = 0; j < startList.size(); j++) {
-                tmpList = busService.getLayOverBus(startList.get(i), endList.get(j));
+            for(int j = 0; j < endList.size(); j++) { // 버스 이름 넘어가도록 수정
+                System.out.println(startList.get(i).getStationId().getValue() + " " + endList.get(j).getStationId().getValue());
+                tmpList = busService.getDirectBusFromDepartureToArrival(startList.get(i).getStationId().getValue(), endList.get(j).getStationId().getValue());
                 for (BusNumber busNumber : tmpList) {
-                    routeList.addAll(
+
+                    tmpTbl.addAll(
                         new ArrivalTableData(
-                            new SimpleIntegerProperty(startList.get(i)),
-                            new SimpleIntegerProperty(endList.get(j)),
+                            new SimpleIntegerProperty(startList.get(i).getStationId().getValue()),
+                            new SimpleIntegerProperty(endList.get(j).getStationId().getValue()),
                             new SimpleStringProperty(busNumber.getBusNumber()),
                             new SimpleIntegerProperty(0)
                         )
                     );
+
                 }
             }
         }
-        setLeftTime();
+        System.out.println("\n\n\n" + tmpTbl + "\n\n\n");
+        startCol.setCellValueFactory(cellData -> cellData.getValue().getStartStation().asObject());
+        endCol.setCellValueFactory(cellData -> cellData.getValue().getEndStation().asObject());
+        busCol.setCellValueFactory(cellData -> cellData.getValue().getBus());
+        leftCol.setCellValueFactory(cellData -> cellData.getValue().getLeftTime().asObject());
+        tblArrival.setItems(tmpTbl);
     }
 
     private void setLeftTime(){

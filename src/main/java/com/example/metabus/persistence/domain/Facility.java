@@ -1,10 +1,7 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
 public class Facility {
     private int privateId;
     private String name;
@@ -12,11 +9,26 @@ public class Facility {
     private double latitude;
     private double longitude;
 
-    public int getId() {
+    public Facility() {
+
+    }
+
+    public Facility(int privateId, String name, String address, double latitude, double longitude, List<UserFacilityHistory> userFacilityHistories) {
+        this.privateId = privateId;
+        this.name = name;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.userFacilityHistories = userFacilityHistories;
+    }
+
+    private List<UserFacilityHistory> userFacilityHistories;
+
+    public int getPrivateId() {
         return privateId;
     }
 
-    public void setId(int privateId) {
+    public void setPrivateId(int privateId) {
         this.privateId = privateId;
     }
 
@@ -50,5 +62,13 @@ public class Facility {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public List<UserFacilityHistory> getUserFacilityHistories() {
+        return userFacilityHistories;
+    }
+
+    public void setUserFacilityHistories(List<UserFacilityHistory> userFacilityHistories) {
+        this.userFacilityHistories = userFacilityHistories;
     }
 }

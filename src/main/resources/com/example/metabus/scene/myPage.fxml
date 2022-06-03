@@ -81,11 +81,11 @@
                </VBox.margin>
             </HBox>
             <TableView fx:id="tblFacility" prefHeight="286.0" prefWidth="598.0" styleClass="ibmM">
-              <columns>
-                <TableColumn fx:id="groupCol" prefWidth="97.0" text="그룹" />
-                <TableColumn fx:id="nameCol" prefWidth="97.0" text="시설명" />
-                <TableColumn fx:id="addressCol" prefWidth="400.0" text="주소" />
-              </columns>
+               <columns>
+                  <TableColumn fx:id="groupCol" prefWidth="97.0" text="그룹" />
+                  <TableColumn fx:id="nameCol" prefWidth="97.0" text="시설명" />
+                  <TableColumn fx:id="addressCol" prefWidth="400.0" text="주소" />
+               </columns>
             </TableView>
          </children>
       </VBox>

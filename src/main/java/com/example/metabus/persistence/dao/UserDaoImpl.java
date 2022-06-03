@@ -2,6 +2,7 @@ package com.example.metabus.persistence.dao;
 
 import com.example.metabus.persistence.domain.User;
 import com.example.metabus.persistence.domain.UserRouteHistory;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,7 +19,8 @@ public class UserDaoImpl implements UserDao  {
         SqlSession session = mybatisUtil.getInstance().getSqlSessionFactory().openSession();
         boolean flag;
         try {
-            flag=  session.getMapper(UserDao.class).insertUser(user);
+          flag = session.getMapper(UserDao.class).insertUser(user);
+          System.out.println("insert user" + user.getLoginId() + user.getLoginPassword() + user.getName());
             session.commit();
         } finally {
             session.close();
@@ -79,6 +81,18 @@ public class UserDaoImpl implements UserDao  {
             session.close();
         }
         return userRouteHistory;
+    }
+
+    @Override
+    public int getPrivateId(String loginId){
+        SqlSession session = mybatisUtil.getInstance().getSqlSessionFactory().openSession();
+        int id;
+        try{
+            id = session.getMapper(UserDao.class).getPrivateId(loginId);
+        } finally {
+            session.close();
+        }
+        return id;
     }
 
 

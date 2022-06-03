@@ -10,49 +10,45 @@ import java.util.List;
 
 public class MemberService {
 
-    private UserDao userDao;
+   private UserDao userDao;
 
     public MemberService() {
         userDao= new UserDaoImpl();
     }
 
-
     public Boolean UserValidation(String id, String pw){
         User user;
         user = userDao.checkValidation(id,pw);
-        if(user.getLoginId().equals(id) && user.getLoginPassword().equals(pw))
-        {
+        if(user.getLoginId().equals(id) && user.getLoginPassword().equals(pw)) {
             return true;
         }
         return false;
     }
 
-    public Boolean checkIdIsDuplicated(String id){
-        User user;
-        user = userDao.checkIdIsDuplicated(id);
-        if(user.getLoginId().equals(id))
-        {
-            return false;
-        }
-        return true;
+    public int getPI(String id){
+        return userDao.getPrivateId(id);
     }
+
 
     public String findPassWord(String id){
         User user;
-        user = userDao.findPassword(id);
-        if(user.getLoginPassword()==null)
-        {
-            return "there is no matched input id";
+        try{
+            user = userDao.findPassword(id);
+            return user.getLoginPassword();
+        } catch(Exception e){
+            return "";
         }
-        return user.getLoginPassword();
     }
 
-    public boolean signUp(String name, String id, String pw)
-    {
-        boolean flag;
-        User user=new User(name,id,pw);
-        flag = userDao.insertUser(user);
-        return flag;
+    public boolean signUp(String name, String id, String pw) {
+        try {
+            User user = new User(name, id, pw);
+            System.out.println(name + " " + id + " " + pw);
+            return userDao.insertUser(user);
+        } catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public List<Integer> getUserRouteHistory(String id){

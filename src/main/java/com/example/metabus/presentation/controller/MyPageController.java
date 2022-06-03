@@ -1,6 +1,8 @@
 package com.example.metabus.presentation.controller;
 
+import com.example.metabus.persistence.domain.Facility;
 import com.example.metabus.service.FacilityService;
+import com.example.metabus.service.HistoryService;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -11,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MyPageController implements Initializable {
@@ -45,14 +48,29 @@ public class MyPageController implements Initializable {
 
     private void setTblFacility(){
         FacilityService facilityService = new FacilityService();
-        // 사용자 시설 기록 조회 기능 없어서 불가
-        ObservableList<FacilityTableData> fufList = FXCollections.observableArrayList(
-                new FacilityTableData(new SimpleStringProperty("그룹"), new SimpleStringProperty("시설명"), new SimpleStringProperty("주소"))
-        );
-        groupCol.setCellValueFactory(cellData -> cellData.getValue().getGroup());
-        nameCol.setCellValueFactory(cellData -> cellData.getValue().getName());
-        addressCol.setCellValueFactory(cellData -> cellData.getValue().getAddress());
-        tblFacility.setItems(fufList);
+        HistoryService historyService = new HistoryService();
+        List<Facility> visitedList = historyService.getUserHistoryOfFacility(LoginController.user_id);
+
+        try{
+            ObservableList<FacilityTableData> facList = FXCollections.observableArrayList();
+            for(int i = 0; i < visitedList.size(); i++){
+                facList.addAll(
+                    new FacilityTableData(
+                        new SimpleStringProperty(
+                                facilityService.getFacilityGroupCategoryName(visitedList.get(i).getName()).get(0).getCategoryName()),
+                        new SimpleStringProperty(visitedList.get(i).getName()),
+                        new SimpleStringProperty(visitedList.get(i).getAddress())
+                    )
+                );
+            }
+
+            groupCol.setCellValueFactory(cellData -> cellData.getValue().getGroup());
+            nameCol.setCellValueFactory(cellData -> cellData.getValue().getName());
+            addressCol.setCellValueFactory(cellData -> cellData.getValue().getAddress());
+            tblFacility.setItems(facList);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void setFacInfo(){

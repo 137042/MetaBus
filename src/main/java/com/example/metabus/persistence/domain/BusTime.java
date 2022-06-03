@@ -1,19 +1,23 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.sql.Time;
 
-@NoArgsConstructor
-@AllArgsConstructor
 public class BusTime {
     private int busRouteId;
     private Time departureTime;
     private int dispatchOrder;
     private Boolean isWeekend;
 
+    public BusTime() {
 
+    }
+
+    public BusTime(int busRouteId, Time departureTime, int dispatchOrder, Boolean isWeekend) {
+        this.busRouteId = busRouteId;
+        this.departureTime = departureTime;
+        this.dispatchOrder = dispatchOrder;
+        this.isWeekend = isWeekend;
+    }
 
     public int getBusRouteId() {
         return busRouteId;

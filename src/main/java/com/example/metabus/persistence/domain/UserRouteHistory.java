@@ -1,17 +1,32 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserRouteHistory {
 
+    private int privateId;
     private User userId;
     private int startStationId;
     private int arrivalStationId;
     private int count;
 
+    public UserRouteHistory() {
+
+    }
+
+    public UserRouteHistory(int privateId, User userId, int startStationId, int arrivalStationId, int count) {
+        this.privateId = privateId;
+        this.userId = userId;
+        this.startStationId = startStationId;
+        this.arrivalStationId = arrivalStationId;
+        this.count = count;
+    }
+
+    public int getPrivateId() {
+        return privateId;
+    }
+
+    public void setPrivateId(int privateId) {
+        this.privateId = privateId;
+    }
 
     public User getUserId() {
         return userId;

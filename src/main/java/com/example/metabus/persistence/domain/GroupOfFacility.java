@@ -1,16 +1,18 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
 public class GroupOfFacility {
 
     private int groupId;
     private Facility facilityId;
 
+    public GroupOfFacility() {
 
+    }
+
+    public GroupOfFacility(int groupId, Facility facilityId) {
+        this.groupId = groupId;
+        this.facilityId = facilityId;
+    }
 
     public int getGroupId() {
         return groupId;
@@ -27,4 +29,5 @@ public class GroupOfFacility {
     public void setFacilityId(Facility facilityId) {
         this.facilityId = facilityId;
     }
+
 }

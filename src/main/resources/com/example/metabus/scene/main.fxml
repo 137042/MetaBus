@@ -79,18 +79,18 @@
                </children>
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="140.0" prefWidth="200.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tblStart" prefHeight="140.0" prefWidth="420.0" styleClass="ibmM">
-                          <columns>
-                            <TableColumn fx:id="startCheckCol" prefWidth="40.0" />
-                            <TableColumn fx:id="startIdCol" prefWidth="75.0" text="서비스ID" />
+                           <columns>
+                              <TableColumn fx:id="startCheckCol" prefWidth="40.0" />
+                              <TableColumn fx:id="startIdCol" prefWidth="75.0" text="서비스ID" />
                               <TableColumn fx:id="startNameCol" prefWidth="300.0" text="버스정류장" />
-                          </columns>
+                           </columns>
                         </TableView>
                      </children></AnchorPane>
-              </content>
+               </content>
             </ScrollPane>
             <HBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="200.0">
                <children>
@@ -118,18 +118,18 @@
                </padding>
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="140.0" prefWidth="200.0" styleClass="ibmM">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tblEnd" prefHeight="140.0" prefWidth="420.0">
-                          <columns>
-                            <TableColumn fx:id="endCheckCol" prefWidth="40.0" />
-                            <TableColumn fx:id="endIdCol" prefWidth="75.0" text="서비스ID" />
+                           <columns>
+                              <TableColumn fx:id="endCheckCol" prefWidth="40.0" />
+                              <TableColumn fx:id="endIdCol" prefWidth="75.0" text="서비스ID" />
                               <TableColumn fx:id="endNameCol" prefWidth="300.0" text="버스정류장" />
-                          </columns>
+                           </columns>
                         </TableView>
                      </children></AnchorPane>
-              </content>
+               </content>
             </ScrollPane>
             <Button fx:id="btnRouteCheck" mnemonicParsing="false" onAction="#searchRoute" prefHeight="40.0" prefWidth="430.0" styleClass="btn-txt-small" text="선택한 정류장을 지나는 버스를 확인하기">
                <VBox.margin>
@@ -192,7 +192,7 @@
          </children>
       </HBox>
       <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="316.0" styleClass="bg" translateY="-25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <content>
+         <content>
             <TableView fx:id="tblArrival" prefHeight="425.0" prefWidth="322.0" styleClass="ibmM" stylesheets="@../stylesheet.css">
                <columns>
                   <TableColumn fx:id="startCol" editable="false" prefWidth="85" sortable="false" text="출발 정류장" />
@@ -204,7 +204,7 @@
                   <Insets top="-1.0" />
                </padding>
             </TableView>
-        </content>
+         </content>
          <GridPane.margin>
             <Insets left="20.0" top="-7.0" />
          </GridPane.margin>

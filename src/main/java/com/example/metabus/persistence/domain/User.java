@@ -1,10 +1,5 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
 
     private int privateId;
@@ -13,6 +8,9 @@ public class User {
     private String loginPassword;
     private int groupId;
 
+    public User() {
+
+    }
 
     public User(String name, String loginId, String loginPassword) {
         this.name = name;
@@ -21,6 +19,13 @@ public class User {
 
     }
 
+    public int getPrivateId() {
+        return privateId;
+    }
+
+    public void setPrivateId(int privateId) {
+        this.privateId = privateId;
+    }
 
     public String getName() {
         return name;
@@ -34,20 +39,12 @@ public class User {
         return loginId;
     }
 
-    public String getLoginPassword() {
-        return loginPassword;
-    }
-
-    public int getPrivateId() {
-        return privateId;
-    }
-
-    public void setPrivateId(int privateId) {
-        this.privateId = privateId;
-    }
-
     public void setLoginId(String loginId) {
         this.loginId = loginId;
+    }
+
+    public String getLoginPassword() {
+        return loginPassword;
     }
 
     public void setLoginPassword(String loginPassword) {
@@ -61,5 +58,4 @@ public class User {
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
-
 }

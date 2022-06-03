@@ -1,32 +1,40 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-
 public class BusStation {
 
     private int privateId;
-    private int apiID;
+    private int apiId;
     private int serviceId;
     private String name;
     private double latitude;
     private double longitude;
 
+    public BusStation() {
+
+    }
+
+    public BusStation(int privateId, int serviceId, String name, double latitude, double longitude) {
+        this.privateId = privateId;
+        this.serviceId = serviceId;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public int getPrivateId() {
         return privateId;
     }
+
     public void setPrivateId(int privateId) {
         this.privateId = privateId;
     }
-    public int getApiID() {
-        return apiID;
+
+    public int getApiId() {
+        return apiId;
     }
 
-    public void setApiID(int apiID) {
-        this.apiID = apiID;
+    public void setApiId(int apiId) {
+        this.apiId = apiId;
     }
 
     public int getServiceId() {

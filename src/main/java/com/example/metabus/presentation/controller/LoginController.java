@@ -28,6 +28,8 @@ public class LoginController {
     @FXML
     private Label lblErrId, lblErrPw;
 
+    public static String user_id;
+
     public void clearLbl(){
         lblErrId.setText("");
         lblErrPw.setText("");
@@ -39,6 +41,7 @@ public class LoginController {
 
         if(isValidReq(id, pw)){
             if(isCorrectPw(id, pw)){
+                user_id = id;
                 goMainPage();
             }
         }
@@ -85,18 +88,22 @@ public class LoginController {
         final String ERROR_WRONG_PW = "비밀번호를 다시 입력해주세요";
 
         MemberService memberService = new MemberService();
-        if(memberService.UserValidation(id, pw)){
-            return true;
-        }
-        else{
+        try{
+
+            if(memberService.UserValidation(id, pw)){
+                return true;
+            }
+        } catch(Exception e){
+            e.printStackTrace();
             lblErrId.setText(ERROR_WRONG_ID);
             lblErrPw.setText(ERROR_WRONG_PW);
             return false;
         }
+        return true;
     }
 
     private void goMainPage() {
-        final String PATH_MAIN_PAGE = "src/main/resources/com/example/metabus/scene/main.fxml";
+        final String PATH_MAIN_PAGE = "src/main/resources/com/example/metabus_client/scene/main.fxml";
         Stage stage = (Stage) btnLogin.getScene().getWindow();
         try {
             URL location = new File(PATH_MAIN_PAGE).toURI().toURL();

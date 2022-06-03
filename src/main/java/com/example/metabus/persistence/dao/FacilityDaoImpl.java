@@ -23,7 +23,6 @@ public class FacilityDaoImpl implements FacilityDao {
             session.close();
         }
         return facilities;
-
     }
 
 

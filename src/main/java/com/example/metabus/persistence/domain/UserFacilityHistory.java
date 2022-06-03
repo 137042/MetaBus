@@ -1,30 +1,44 @@
 package com.example.metabus.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserFacilityHistory {
-    private Facility facilityId;
-    private User userId;
+
+    private int privateId;
+    private Facility facility;
+    private User user;
     private int count;
 
+    public UserFacilityHistory() {
 
-    public Facility getFacilityId() {
-        return facilityId;
     }
 
-    public void setFacilityId(Facility facilityId) {
-        this.facilityId = facilityId;
+    public UserFacilityHistory(Facility facility, User user, int count) {
+        this.facility = facility;
+        this.user = user;
+        this.count = count;
     }
 
-    public User getUserId() {
-        return userId;
+    public int getPrivateId() {
+        return privateId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setPrivateId(int privateId) {
+        this.privateId = privateId;
+    }
+
+    public Facility getFacility() {
+        return facility;
+    }
+
+    public void setFacility(Facility facility) {
+        this.facility = facility;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getCount() {

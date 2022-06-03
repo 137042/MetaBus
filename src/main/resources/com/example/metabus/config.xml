@@ -2,7 +2,10 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+
 <configuration>
+
+    <properties resource="com/example/metabus/db.properties"/>
 
     <typeAliases>
         <package name="com.example.metabus.persistence.domain"/>
@@ -13,17 +16,18 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/metabus"/>
-                <property name="username" value="root"/>
-                <property name="password" value="!80RkY4xoKoPt"/>
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
 
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
-        <mapper resource="DomainMapping.xml"/>
+        <mapper resource="com/example/metabus/DomainMapping.xml"/>
+        <mapper class ="com.example.metabus.persistence.dao.HistoryDao"/>
         <mapper class="com.example.metabus.persistence.dao.UserDao"/>
         <mapper class="com.example.metabus.persistence.dao.FacilityDao"/>
         <mapper class="com.example.metabus.persistence.dao.BusDao"/>

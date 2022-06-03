@@ -9,24 +9,24 @@ import java.util.List;
 
 public class FacilityService {
 
-    private FacilityDao findFacilityFromLocationDao;
+    private FacilityDao facilityDao;
 
     public FacilityService() {
-        findFacilityFromLocationDao = new FacilityDaoImpl();
+        facilityDao = new FacilityDaoImpl();
     }
 
-    public List<Facility> getFacility(String facilityName){
+    public List<Facility> getFacilities(String facilityName){
         List<Facility> facilities = new ArrayList<>();
-        facilities = findFacilityFromLocationDao.getNameContainsFacility(facilityName);
+        facilities = facilityDao.getNameContainsFacility(facilityName);
         return facilities;
     }
 
-    public List<FacilityGroup> getGroupOfFacility(String facilityName){
+    public List<FacilityGroup> getFacilityGroupCategoryName(String facilityName){
         List<FacilityGroup> facilityGroups = new ArrayList<>();
-        facilityGroups = findFacilityFromLocationDao.getFacilityGroups(facilityName);
+        facilityGroups = facilityDao.getFacilityGroups(facilityName);
         return facilityGroups;
     }
 
-}
+    }
 
 
